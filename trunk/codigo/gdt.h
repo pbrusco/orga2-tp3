@@ -6,7 +6,7 @@
  * Global Descriptor Table
  * Definicion de las estructuras de la GDT.
  */
-#define GDT_COUNT 192
+#define GDT_COUNT 256
 
 /* 
  * Struct de descriptor de GDT 
