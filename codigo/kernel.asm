@@ -24,55 +24,12 @@ bienvenida:
 	IMPRIMIR_MODO_REAL iniciando, iniciando_len, 0x07, 0, 0
 	; Ejercicios AQUI
 
+	;ejercicio1
 
-
-		bits 16
+		%include "ejercicio1.asm"
 		
-		
-		xchg bx, bx
-		call disable_A20
-		call check_A20
-		call enable_A20
-		call check_A20
-		cli			;deshabilito interrupciones
-		lgdt[GDT_DESC]		;carga el registro lgdt con los datos de la gtr que armamos mas abajo
-		mov eax, cr0
-		or eax, 1
-		mov cr0, eax		;habilito modo protegido
-		jmp 0x08:modo_protegido
-		bits 32
-		modo_protegido:
-			mov ax, 0x10
-			mov ds, ax
-			mov es, ax
-			mov fs, ax
-			mov gs, ax
-			mov ss, ax
-			
-			;aca hacemos el mostrar en pantalla que hicimos la clase anterior
-			mov edi, 0xb8000
-			mov al, 'A'
-			mov ah, 0x0a
-			mov ecx, 80
-		
-			cicloFilaArriba:
-				mov [edi], ax
-				add edi, 2
-				loop cicloFilaArriba
-			mov ecx, 23
-			cicloBordes:
-				mov [edi], ax
-				add edi, 158
-				mov [edi], ax
-				add edi, 2
-				loop cicloBordes
-			mov ecx, 80
-			cicloFilaAbajo:
-				mov [edi], ax
-				add edi, 2
-				loop cicloFilaAbajo
 				
-			jmp $
+	jmp $
 
 		
 
