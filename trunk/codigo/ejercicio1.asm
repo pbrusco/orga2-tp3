@@ -12,7 +12,6 @@ mov cr0, eax		;habilito modo protegido
 jmp 0x08:modo_protegido
 bits 32
 modo_protegido:
-	xchg bx,bx
 	mov ax, 0x10
 	mov ds, ax
 	mov fs, ax
@@ -20,13 +19,12 @@ modo_protegido:
 	mov ss, ax
 	mov ax, 0x18
 	mov es, ax	;A ES LE PONEMOS 0200h porque le estamos indicando donde debe escribir el video,
-	xchg bx,bx
+	
 	;aca hacemos el mostrar en pantalla que hicimos la clase anterior
 	mov edi, 0
 	mov al, '*'
 	mov ah, 0xc0
 	mov ecx, 80
-	xchg bx,bx
 	cicloFilaArriba:
 		mov [es:edi], ax
 		add edi, 2

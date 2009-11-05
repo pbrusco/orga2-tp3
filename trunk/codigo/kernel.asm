@@ -29,13 +29,16 @@ bienvenida:
 		%include "ejercicio1.asm"
 		
 				
-	jmp $
+	
 
 		
 
 	; Ejercicio 2
 		
-		; TODO: Habilitar paginacion
+		%include "ejercicio2.asm"
+
+
+	jmp $
 	
 	; Ejercicio 3
 	
@@ -60,12 +63,20 @@ bienvenida:
 		; TODO: Saltar a la primer tarea
 		
 		
+
+
 %include "a20.asm"
+%include "paging.asm"
 
 %define TASK1INIT 0x8000
 %define TASK2INIT 0x9000
 %define KORG 0x1200
 
+mensaje db "Hola Mundo, con segmentacion flat e identity mapping!",0
+mensaje_len equ $-mensaje 
+
 TIMES TASK1INIT - KORG - ($ - $$) db 0x00
 incbin "pintor.tsk"
 incbin "traductor.tsk"
+
+
