@@ -1,0 +1,2 @@
+#!/bin/bash
+/home/mabianchi/bochs-2.4/bochs -q
