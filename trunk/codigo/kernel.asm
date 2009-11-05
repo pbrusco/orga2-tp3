@@ -65,18 +65,23 @@ bienvenida:
 		
 
 
+mensaje db "Hola Mundo, con segmentacion flat e identity mapping!",0
+mensaje_len equ $-mensaje 
+
 %include "a20.asm"
-%include "paging.asm"
+
+%define COMIENZODETABLADEPAGINAS 0xB000
+%define KORG 0x1200
+
+
 
 %define TASK1INIT 0x8000
 %define TASK2INIT 0x9000
-%define KORG 0x1200
-
-mensaje db "Hola Mundo, con segmentacion flat e identity mapping!",0
-mensaje_len equ $-mensaje 
 
 TIMES TASK1INIT - KORG - ($ - $$) db 0x00
 incbin "pintor.tsk"
 incbin "traductor.tsk"
 
+TIMES COMIENZODETABLADEPAGINAS - KORG - ($ - $$) db 0x00
+%include "paging.asm"
 
