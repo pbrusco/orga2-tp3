@@ -6,7 +6,7 @@
 
 		
 		
-		call page_init			;esto me inicializa el directorio
+		;call page_init			;esto me inicializa el directorio
 		xchg bx,bx
 		mov eax, page_dir		;cargo la direccion del directorio en cr3
 		mov cr3, eax
