@@ -18,7 +18,7 @@ modo_protegido:
 	mov gs, ax
 	mov ss, ax
 	mov ax, 0x18
-	mov es, ax	;A ES LE PONEMOS 0200h porque le estamos indicando donde debe escribir el video,
+	mov es, ax	;A ES LE PONEMOS 18h = 24d (3*8) porque le estamos indicando donde debe escribir el video,
 	
 	;aca hacemos el mostrar en pantalla que hicimos la clase anterior
 	mov edi, 0

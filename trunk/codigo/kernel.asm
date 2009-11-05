@@ -16,7 +16,7 @@ start:
 		jmp 	bienvenida
 
 ;aca ponemos todos los mensajes		
-iniciando: db 'Iniciando el kernel mas inutil del mundo'
+iniciando: db 'Iniciando el kernel mas divertido del mundo'
 iniciando_len equ $ - iniciando		
 
 
@@ -70,7 +70,7 @@ mensaje_len equ $-mensaje
 
 %include "a20.asm"
 
-%define COMIENZODETABLADEPAGINAS 0xB000
+%define ComienzoDirectorioPaginaTraductorYKernel 0xB000   
 %define KORG 0x1200
 
 
@@ -82,6 +82,6 @@ TIMES TASK1INIT - KORG - ($ - $$) db 0x00
 incbin "pintor.tsk"
 incbin "traductor.tsk"
 
-TIMES COMIENZODETABLADEPAGINAS - KORG - ($ - $$) db 0x00
+TIMES ComienzoDirectorioPaginaTraductorYKernel - KORG - ($ - $$) db 0x00
 %include "paging.asm"
 
