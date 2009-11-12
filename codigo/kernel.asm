@@ -65,12 +65,12 @@ bienvenida:
 		
 
 
-mensaje db "Hola Mundo, con segmentacion flat e identity mapping!",0
+mensaje db 'Grupo PUNPCKHQDQ',0
 mensaje_len equ $-mensaje 
 
 %include "a20.asm"
 
-%define ComienzoDirectorioPaginaTraductorYKernel 0xB000   
+%define ComienzoDirectorioPaginaPintor 0xA000   
 %define KORG 0x1200
 
 
@@ -82,6 +82,6 @@ TIMES TASK1INIT - KORG - ($ - $$) db 0x00
 incbin "pintor.tsk"
 incbin "traductor.tsk"
 
-TIMES ComienzoDirectorioPaginaTraductorYKernel - KORG - ($ - $$) db 0x00
+TIMES ComienzoDirectorioPaginaPintor - KORG - ($ - $$) db 0x00
 %include "paging.asm"
 
