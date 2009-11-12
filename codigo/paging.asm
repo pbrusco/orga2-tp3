@@ -79,11 +79,8 @@ dd i | 2				;supervisor, read/write, no presente
 %endrep
 
 
-%assign i 0x10000			;B8000 - B8FFF --> 10000 - 10FFF
-%rep    0x1
-	
-    dd 	i | 3				;supervisor, read/write, present
-%endrep
+;B8000 - B8FFF --> 10000 - 10FFF
+dd 	0x10003				;supervisor, read/write, present
 
 
 %assign i 0xB9000			;B9000 - 3FFFFF--> B9000 - 3FFFFF
