@@ -34,13 +34,13 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support: vbe 
-00000000000i[MEM0 ] allocated memory at 0xb5167008. after alignment, vector=0xb5168000
+00000000000i[MEM0 ] allocated memory at 0xb5164008. after alignment, vector=0xb5165000
 00000000000i[MEM0 ] 32,00MB
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/home/pablo/bochs-2.4//share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/40448 ('/home/pablo/bochs-2.4//share/bochs/VGABIOS-lgpl-latest')
 00000000000e[DEV  ] Bochs is not compiled with PCI support
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Thu Nov 12 19:19:33 2009 (time0=1258064373)
+00000000000i[CMOS ] Setting initial clock to: Thu Nov 12 21:42:00 2009 (time0=1258072920)
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[DMA  ] channel 2 used by Floppy Drive
 00000000000i[FDD  ] fd0: './diskette.img' ro=0, h=2,t=80,spt=18
@@ -86,41 +86,59 @@
 00000000000i[XGUI ] [x] Mouse off
 00000000000i[     ] set SIGINT handler to bx_debug_ctrlc_handler
 00000003305i[BIOS ] $Revision: 1.231 $ $Date: 2009/04/26 17:17:07 $
-00000400071i[KBD  ] reset-disable command received
-00000549781i[VBIOS] VGABios $Id: vgabios.c,v 1.69 2009/04/07 18:18:20 vruppert Exp $
-00000549852i[VGA  ] VBE known Display Interface b0c0
-00000549884i[VGA  ] VBE known Display Interface b0c5
-00000552809i[VBIOS] VBE Bios $Id: vbe.c,v 1.62 2009/01/25 15:46:25 vruppert Exp $
-00000859370i[BIOS ] Starting rombios32
-00000859867i[BIOS ] Shutdown flag 0
-00000860548i[BIOS ] ram_size=0x02000000
-00000861026i[BIOS ] ram_end=32MB
-00000861544i[BIOS ] Found 1 cpu(s)
-00000880579i[BIOS ] bios_table_addr: 0x000fb9a8 end=0x000fcc00
-00000895947i[BIOS ] MP table addr=0x000fba80 MPC table addr=0x000fb9b0 size=0xd0
-00000897791i[BIOS ] SMBIOS table addr=0x000fba90
-00000898674i[BIOS ] bios_table_cur_addr: 0x000fbb94
+00000387554i[KBD  ] reset-disable command received
+00000537302i[VBIOS] VGABios $Id: vgabios.c,v 1.69 2009/04/07 18:18:20 vruppert Exp $
+00000537373i[VGA  ] VBE known Display Interface b0c0
+00000537405i[VGA  ] VBE known Display Interface b0c5
+00000540330i[VBIOS] VBE Bios $Id: vbe.c,v 1.62 2009/01/25 15:46:25 vruppert Exp $
+00000846891i[BIOS ] Starting rombios32
+00000847388i[BIOS ] Shutdown flag 0
+00000848069i[BIOS ] ram_size=0x02000000
+00000848547i[BIOS ] ram_end=32MB
+00000849065i[BIOS ] Found 1 cpu(s)
+00000868100i[BIOS ] bios_table_addr: 0x000fb9a8 end=0x000fcc00
+00000883468i[BIOS ] MP table addr=0x000fba80 MPC table addr=0x000fb9b0 size=0xd0
+00000885312i[BIOS ] SMBIOS table addr=0x000fba90
+00000886195i[BIOS ] bios_table_cur_addr: 0x000fbb94
 00002500000i[XGUI ] charmap update. Font Height is 16
 00153228420i[BIOS ] Booting from 0000:7c00
-00238487102i[CPU0 ] [238487102] Stopped on MAGIC BREAKPOINT
-00238487102i[     ] dbg: Quit
-00238487102i[CPU0 ] CPU is in protected mode (active)
-00238487102i[CPU0 ] CS.d_b = 32 bit
-00238487102i[CPU0 ] SS.d_b = 32 bit
-00238487102i[CPU0 ] | EAX=e000a000  EBX=000001da  ECX=00000000  EDX=00000100
-00238487102i[CPU0 ] | ESP=00004ffc  EBP=00000014  ESI=00001346  EDI=000180c4
-00238487102i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df if tf sf zf af pf cf
-00238487102i[CPU0 ] | SEG selector     base    limit G D
-00238487102i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
-00238487102i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
-00238487102i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00238487102i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00238487102i[CPU0 ] |  ES:0018( 0003| 0|  0) 000b8000 00f9ffff 1 1
-00238487102i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00238487102i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00238487102i[CPU0 ] | EIP=00001330 (00001330)
-00238487102i[CPU0 ] | CR0=0xe0000011 CR2=0x00000000
-00238487102i[CPU0 ] | CR3=0x0000b000 CR4=0x00000000
-00238487102i[CMOS ] Last time is 1258064377 (Thu Nov 12 19:19:37 2009)
-00238487102i[XGUI ] Exit
-00238487102i[CTRL ] quit_sim called with exit code 0
+00324812502i[CPU0 ] [324812502] Stopped on MAGIC BREAKPOINT
+00374050000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a5)
+00374150000i[KBD  ] internal keyboard buffer full, ignoring scancode.(24)
+00374450000i[KBD  ] internal keyboard buffer full, ignoring scancode.(9e)
+00374500000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a4)
+00374700000i[KBD  ] internal keyboard buffer full, ignoring scancode.(9f)
+00375050000i[KBD  ] internal keyboard buffer full, ignoring scancode.(26)
+00375150000i[KBD  ] internal keyboard buffer full, ignoring scancode.(21)
+00375200000i[KBD  ] internal keyboard buffer full, ignoring scancode.(24)
+00375850000i[KBD  ] internal keyboard buffer full, ignoring scancode.(1e)
+00375950000i[KBD  ] internal keyboard buffer full, ignoring scancode.(1f)
+00376400000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a4)
+00376500000i[KBD  ] internal keyboard buffer full, ignoring scancode.(25)
+00376600000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a6)
+00377000000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a1)
+00377350000i[KBD  ] internal keyboard buffer full, ignoring scancode.(a5)
+00377550000i[KBD  ] internal keyboard buffer full, ignoring scancode.(9e)
+00377600000i[KBD  ] internal keyboard buffer full, ignoring scancode.(9f)
+00409892446i[     ] Ctrl-C detected in signal handler.
+00409892447i[     ] dbg: Quit
+00409892447i[CPU0 ] CPU is in protected mode (active)
+00409892447i[CPU0 ] CS.d_b = 32 bit
+00409892447i[CPU0 ] SS.d_b = 32 bit
+00409892447i[CPU0 ] | EAX=00000061  EBX=000001da  ECX=00000000  EDX=0000e083
+00409892447i[CPU0 ] | ESP=00004ffc  EBP=00000014  ESI=0000137c  EDI=000180c4
+00409892447i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf ZF af PF CF
+00409892447i[CPU0 ] | SEG selector     base    limit G D
+00409892447i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
+00409892447i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
+00409892447i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00409892447i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00409892447i[CPU0 ] |  ES:0018( 0003| 0|  0) 000b8000 00f9ffff 1 1
+00409892447i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00409892447i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00409892447i[CPU0 ] | EIP=00001366 (00001366)
+00409892447i[CPU0 ] | CR0=0xe0000011 CR2=0x00000000
+00409892447i[CPU0 ] | CR3=0x0000b000 CR4=0x00000000
+00409892447i[CMOS ] Last time is 1258072928 (Thu Nov 12 21:42:08 2009)
+00409892447i[XGUI ] Exit
+00409892447i[CTRL ] quit_sim called with exit code 0

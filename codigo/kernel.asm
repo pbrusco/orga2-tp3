@@ -37,16 +37,24 @@ bienvenida:
 		
 		%include "ejercicio2.asm"
 
-	jmp $
 	
 	; Ejercicio 3
-	
+		
+		
 		; TODO: Inicializar la IDT
-		
+		call idtFill
 		; TODO: Resetear la pic
-		
+		%include "rutina_de_remapeo_pic.asm"
+
 		; TODO: Cargar el registro IDTR
+		lidt[IDT_DESC] 
+
+		sti
+		
+
+		jmp $
 				
+		
 	; Ejercicio 4
 	
 		; TODO: Inicializar las TSS
