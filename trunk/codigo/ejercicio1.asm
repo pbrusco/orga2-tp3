@@ -1,5 +1,4 @@
 bits 16
-		
 call disable_A20
 call check_A20
 call enable_A20

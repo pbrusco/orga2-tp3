@@ -1,4 +1,3 @@
-
 mov eax, page_dir_traductorykernel	;cargo la direccion del directorio en cr3
 mov cr3, eax
 

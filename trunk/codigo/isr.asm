@@ -8,15 +8,21 @@ extern pic1_intr_end
 ; TODO: Definir el resto de las ISR
 ; ----------------------------------------------------------------
 
-global _isr0,_isr21h
+global _isr0, _isr20, _isr21
 
-msgisr0: db 'EXCEPCION: Division por cero'
+msgisr0: db 'EXCEPCION #DE: Error de division'
 msgisr0_len equ $-msgisr0
 
-msgisr21h: db 'Interrupcion:BONYOURRRR PEDAZO DE ZOQUETE.. Tecleaste Algo'
-msgisr21h_len equ $-msgisr21h
+
+
+msgisr20: db 'Interrupcion : Timer tick'
+msgisr20_len equ $-msgisr20
+
+msgisr21: db 'Interrupcion : Tecleastesssssss'
+msgisr21_len equ $-msgisr21
 
 _isr0:
+	cli
 	mov edx, msgisr0
 	IMPRIMIR_TEXTO edx, msgisr0_len, 0x0C, 0, 0, 0x13000
 	jmp $
@@ -24,24 +30,31 @@ _isr0:
 
 
 
-_isr21h: 
-	cli	
-	xchg bx,bx
-	mov edx, msgisr21h
-	IMPRIMIR_TEXTO edx, msgisr21h_len, 0x0C, 0, 0, 0x13000
+_isr20: 
+	cli
+	call next_clock
 
 	;vamos a avisar que se atendio vio..
-	
+	mov al, 0x20
+	out 0x20, al
 
-	mov al, 0xFF 			;OCW1: Set o Clearel IMR
-	out 0x21, al
-	
-	;HABILITO LA PARTE DEL TECLADO DEL PIC1:
-	mov al,0x61
-	out 0x21, al
-	
-	
-		
+	sti
+	iret
+
+
+
+_isr21: 
+	cli
+	mov edx, msgisr21
+	IMPRIMIR_TEXTO edx, msgisr21_len, 0x0C, 0xA, 1, 0x13000
+
+	xor eax, eax
+	in al, 0x60
+
+	IMPRIMIR_TEXTO eax, 1, 0x0C, 0xA, (msgisr21_len+4), 0x13000
+
+	mov al, 0x20
+	out 0x20, al
 
 	sti
 	iret

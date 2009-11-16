@@ -11,10 +11,16 @@ void idtFill() {
 	idt[0].attr = (unsigned short) 0x8E00; \
 	idt[0].offset_16_31 = (unsigned short) ((unsigned int)(&_isr0) >> 16 & (unsigned int) 0xFFFF);
 
-	idt[33].offset_0_15 = (unsigned short) ((unsigned int)(&_isr21h) & (unsigned int) 0xFFFF); \
+	idt[32].offset_0_15 = (unsigned short) ((unsigned int)(&_isr20) & (unsigned int) 0xFFFF); \
+	idt[32].segsel = (unsigned short) 0x0008; \
+	idt[32].attr = (unsigned short) 0x8E00; \
+	idt[32].offset_16_31 = (unsigned short) ((unsigned int)(&_isr20) >> 16 & (unsigned int) 0xFFFF);
+
+
+	idt[33].offset_0_15 = (unsigned short) ((unsigned int)(&_isr21) & (unsigned int) 0xFFFF); \
 	idt[33].segsel = (unsigned short) 0x0008; \
 	idt[33].attr = (unsigned short) 0x8E00; \
-	idt[33].offset_16_31 = (unsigned short) ((unsigned int)(&_isr21h) >> 16 & (unsigned int) 0xFFFF);
+	idt[33].offset_16_31 = (unsigned short) ((unsigned int)(&_isr21) >> 16 & (unsigned int) 0xFFFF);
 	
 
 	/*

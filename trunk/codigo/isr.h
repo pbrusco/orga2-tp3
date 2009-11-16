@@ -6,7 +6,9 @@
  * TODO: Agregar el resto de las ISR
  */
 void _isr0();
-void _isr21h();
+
+void _isr20();
+void _isr21();
 
 /* **************************************************************
  * Funciones Auxiliares
