@@ -2,8 +2,8 @@ BITS 16
 %include "macrosmodoreal.mac"
 
 global start
-extern GDT_DESC
-extern gdt;
+;extern GDT_DESC
+;extern gdt;
 extern IDT_DESC
 extern idtFill
 extern tsss;
@@ -87,3 +87,8 @@ incbin "traductor.tsk"
 
 TIMES ComienzoDirectorioPaginaPintor - KORG - ($ - $$) db 0x00
 %include "paging.asm"
+
+%include "gdt.asm"
+
+
+

@@ -34,13 +34,13 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support: vbe 
-00000000000i[MEM0 ] allocated memory at 0xb52c9008. after alignment, vector=0xb52ca000
+00000000000i[MEM0 ] allocated memory at 0xb51b9008. after alignment, vector=0xb51ba000
 00000000000i[MEM0 ] 32,00MB
-00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/home/mariano/bochs-2.4/share/bochs/BIOS-bochs-latest')
-00000000000i[MEM0 ] rom at 0xc0000/40448 ('/home/mariano/bochs-2.4/share/bochs/VGABIOS-lgpl-latest')
+00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/home/pablo/bochs-2.4//share/bochs/BIOS-bochs-latest')
+00000000000i[MEM0 ] rom at 0xc0000/40448 ('/home/pablo/bochs-2.4//share/bochs/VGABIOS-lgpl-latest')
 00000000000e[DEV  ] Bochs is not compiled with PCI support
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Mon Nov 16 00:24:40 2009 (time0=1258341880)
+00000000000i[CMOS ] Setting initial clock to: Mon Nov 16 13:33:14 2009 (time0=1258389194)
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[DMA  ] channel 2 used by Floppy Drive
 00000000000i[FDD  ] fd0: './diskette.img' ro=0, h=2,t=80,spt=18
@@ -86,49 +86,41 @@
 00000000000i[XGUI ] [x] Mouse off
 00000000000i[     ] set SIGINT handler to bx_debug_ctrlc_handler
 00000003305i[BIOS ] $Revision: 1.231 $ $Date: 2009/04/26 17:17:07 $
-00000337554i[KBD  ] reset-disable command received
-00000487302i[VBIOS] VGABios $Id: vgabios.c,v 1.69 2009/04/07 18:18:20 vruppert Exp $
-00000487373i[VGA  ] VBE known Display Interface b0c0
-00000487405i[VGA  ] VBE known Display Interface b0c5
-00000490330i[VBIOS] VBE Bios $Id: vbe.c,v 1.62 2009/01/25 15:46:25 vruppert Exp $
-00000796891i[BIOS ] Starting rombios32
-00000797388i[BIOS ] Shutdown flag 0
-00000798069i[BIOS ] ram_size=0x02000000
-00000798547i[BIOS ] ram_end=32MB
-00000799065i[BIOS ] Found 1 cpu(s)
-00000818100i[BIOS ] bios_table_addr: 0x000fb9a8 end=0x000fcc00
-00000833468i[BIOS ] MP table addr=0x000fba80 MPC table addr=0x000fb9b0 size=0xd0
-00000835312i[BIOS ] SMBIOS table addr=0x000fba90
-00000836195i[BIOS ] bios_table_cur_addr: 0x000fbb94
+00000387554i[KBD  ] reset-disable command received
+00000537302i[VBIOS] VGABios $Id: vgabios.c,v 1.69 2009/04/07 18:18:20 vruppert Exp $
+00000537373i[VGA  ] VBE known Display Interface b0c0
+00000537405i[VGA  ] VBE known Display Interface b0c5
+00000540330i[VBIOS] VBE Bios $Id: vbe.c,v 1.62 2009/01/25 15:46:25 vruppert Exp $
+00000846891i[BIOS ] Starting rombios32
+00000847388i[BIOS ] Shutdown flag 0
+00000848069i[BIOS ] ram_size=0x02000000
+00000848547i[BIOS ] ram_end=32MB
+00000849065i[BIOS ] Found 1 cpu(s)
+00000868100i[BIOS ] bios_table_addr: 0x000fb9a8 end=0x000fcc00
+00000883468i[BIOS ] MP table addr=0x000fba80 MPC table addr=0x000fb9b0 size=0xd0
+00000885312i[BIOS ] SMBIOS table addr=0x000fba90
+00000886195i[BIOS ] bios_table_cur_addr: 0x000fbb94
 00002500000i[XGUI ] charmap update. Font Height is 16
 00153228420i[BIOS ] Booting from 0000:7c00
-03143050000e[XGUI ] xkeypress(): keysym ba unhandled!
-03150050000e[XGUI ] xkeypress(): keysym ba unhandled!
-03476600000e[XGUI ] xkeypress(): keysym a1 unhandled!
-03484200000e[XGUI ] xkeypress(): keysym a1 unhandled!
-04261600000e[XGUI ] xkeypress(): keysym fe50 unhandled!
-04268600000e[XGUI ] xkeypress(): keysym fe50 unhandled!
-04322400000e[XGUI ] xkeypress(): keysym fe50 unhandled!
-04332000000e[XGUI ] xkeypress(): keysym fe50 unhandled!
-05122079773i[     ] Ctrl-C detected in signal handler.
-05122079774i[     ] dbg: Quit
-05122079774i[CPU0 ] CPU is in protected mode (active)
-05122079774i[CPU0 ] CS.d_b = 32 bit
-05122079774i[CPU0 ] SS.d_b = 32 bit
-05122079774i[CPU0 ] | EAX=00000020  EBX=000001da  ECX=00000000  EDX=0000e0d0
-05122079774i[CPU0 ] | ESP=00004ffc  EBP=00000014  ESI=0000137c  EDI=000180c4
-05122079774i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf ZF af PF CF
-05122079774i[CPU0 ] | SEG selector     base    limit G D
-05122079774i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
-05122079774i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
-05122079774i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-05122079774i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-05122079774i[CPU0 ] |  ES:0018( 0003| 0|  0) 000b8000 00f9ffff 1 1
-05122079774i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-05122079774i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-05122079774i[CPU0 ] | EIP=00001366 (00001366)
-05122079774i[CPU0 ] | CR0=0xe0000011 CR2=0x00000000
-05122079774i[CPU0 ] | CR3=0x0000b000 CR4=0x00000000
-05122079774i[CMOS ] Last time is 1258341982 (Mon Nov 16 00:26:22 2009)
-05122079774i[XGUI ] Exit
-05122079774i[CTRL ] quit_sim called with exit code 0
+00284950000i[     ] Ctrl-C detected in signal handler.
+00284950000i[     ] dbg: Quit
+00284950000i[CPU0 ] CPU is in protected mode (active)
+00284950000i[CPU0 ] CS.d_b = 32 bit
+00284950000i[CPU0 ] SS.d_b = 32 bit
+00284950000i[CPU0 ] | EAX=00000020  EBX=00000291  ECX=00000000  EDX=00000000
+00284950000i[CPU0 ] | ESP=00004ffc  EBP=00000014  ESI=0000137c  EDI=000180c4
+00284950000i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf ZF af PF CF
+00284950000i[CPU0 ] | SEG selector     base    limit G D
+00284950000i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
+00284950000i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
+00284950000i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00284950000i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00284950000i[CPU0 ] |  ES:0018( 0003| 0|  0) 000b8000 00f9ffff 1 1
+00284950000i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00284950000i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00284950000i[CPU0 ] | EIP=00001366 (00001366)
+00284950000i[CPU0 ] | CR0=0xe0000011 CR2=0x00000000
+00284950000i[CPU0 ] | CR3=0x0000b000 CR4=0x00000000
+00284950000i[CMOS ] Last time is 1258389199 (Mon Nov 16 13:33:19 2009)
+00284950000i[XGUI ] Exit
+00284950000i[CTRL ] quit_sim called with exit code 0
