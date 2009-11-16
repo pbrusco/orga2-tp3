@@ -41,3 +41,9 @@ modo_protegido:
 		mov [es:edi], ax
 		add edi, 2
 		loop cicloFilaAbajo
+
+
+
+
+
+
