@@ -1,5 +1,4 @@
 BITS 16
-
 %include "macrosmodoreal.mac"
 
 global start
@@ -24,13 +23,10 @@ bienvenida:
 	IMPRIMIR_MODO_REAL iniciando, iniciando_len, 0x07, 0, 0
 	; Ejercicios AQUI
 
-	;ejercicio1
+	;Ejercicio 1
 
 		%include "ejercicio1.asm"
 		
-				
-	
-
 		
 
 	; Ejercicio 2
@@ -91,4 +87,3 @@ incbin "traductor.tsk"
 
 TIMES ComienzoDirectorioPaginaPintor - KORG - ($ - $$) db 0x00
 %include "paging.asm"
-

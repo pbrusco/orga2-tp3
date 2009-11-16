@@ -31,15 +31,9 @@ out 0xA1, al
 ; Habilitar!!!
 
 
-;HABILITO LA PARTE DEL TECLADO DEL PIC1:
-mov al,0x61
-out 0x21, al
-
 ;HABILITO EL PIC1:
-;mov al,0x00
-;out 0x21, al
-
-
+mov al,0x00
+out 0x21, al
 
 
 

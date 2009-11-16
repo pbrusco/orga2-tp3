@@ -36,7 +36,7 @@ kernel.bin: $(OBJ)
 
 image: kernel.bin
 	@echo 'Copiando el $(KERNEL_BIN) a la imagen de diskette\n'
-	$(MCOPY) -i $(DISK_IMG) $(KERNEL_BIN) ::/ 
+	$(MCOPY) -i $(DISK_IMG) $(KERNEL_BIN) ::/ -o
 
 clean:
 	rm -f *.bin
