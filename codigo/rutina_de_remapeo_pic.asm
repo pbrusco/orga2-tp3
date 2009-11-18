@@ -2,7 +2,7 @@
 mov al, 0x11 			;ICW1: IRQs activas por flanco, Modo cascada, ICW4 Si.
 out 0x20, al
 
-mov al, 0x20 			;ICW2: INT base para el PIC1 Tipo 8.
+mov al, 0x20			;ICW2: INT base para el PIC1 Tipo 8.
 out 0x21, al
 
 mov al, 0x04 			;ICW3: PIC1 Master, tiene un Slave conectado a IRQ2
@@ -32,8 +32,8 @@ out 0xA1, al
 
 
 ;HABILITO EL PIC1:
-mov al,0x00
-out 0x21, al
+;mov al,0x00
+;out 0x21, al
 
 
 
