@@ -4,6 +4,7 @@ call check_A20
 call enable_A20
 call check_A20
 cli			;deshabilito interrupciones
+
 lgdt[GDT_DESC]		;carga el registro lgdt con los datos de la gtr que armamos mas abajo
 mov eax, cr0
 or eax, 1

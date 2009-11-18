@@ -208,8 +208,9 @@ _isr20:
 	cli
 
 	;vamos a avisar que se atendio vio..
-	call next_clock	
-	
+		
+	call next_clock
+		
 	mov al, 0x20
 	out 0x20, al
 
@@ -220,17 +221,16 @@ _isr20:
 
 _isr21: 
 	cli
-
+	;xor eax, eax
 	in al,0x60
-	mov al, 0x20
-	out 0x20, al
+	
 	
 	mov edx, pantallazo
-	IMPRIMIR_TEXTO edx, 27, 0x3C, 1 , 1, 0x13000
+	IMPRIMIR_TEXTO edx, 1, 0x3C, 1 , 1, 0x13000
+	inc byte [pantallazo]
 		
-	xor ax,ax
-	div ax	
-
+	mov al, 0x20
+	out 0x20, al
 	sti
 	iret
 
@@ -260,5 +260,5 @@ isrmessage2: db '/'
 isrmessage3: db '-'
 isrmessage4: db '\'
 
-pantallazo: db '****** ****** ****** ******'
+pantallazo: db '0'
 

@@ -16,7 +16,9 @@ start:
 
 ;aca ponemos todos los mensajes		
 iniciando: db 'Iniciando el kernel mas divertido del mundo'
-iniciando_len equ $ - iniciando		
+iniciando_len equ $ - iniciando
+mensaje db 'Grupo PUNPCKHQDQ',0
+mensaje_len equ $-mensaje 	
 
 
 bienvenida:
@@ -35,59 +37,46 @@ bienvenida:
 
 	
 	; Ejercicio 3
-		
-		
-		; TODO: Inicializar la IDT
+
 		call idtFill
-		; TODO: Resetear la pic
 		%include "rutina_de_remapeo_pic.asm"
+		lidt[IDT_DESC]
 
-		; TODO: Cargar el registro IDTR
-		lidt[IDT_DESC] 
 
-		sti
-		
-
-		jmp $
-				
-		
 	; Ejercicio 4
 	
-		; TODO: Inicializar las TSS
-		
-		; TODO: Inicializar correctamente los descriptores de TSS en la GDT
-		
-		; TODO: Cargar el registro TR con el descriptor de la GDT de la TSS actual
-		
-		; TODO: Habilitar la PIC
-		
-		; TODO: Habilitar Interrupciones
-		
-		; TODO: Saltar a la primer tarea
-		
-		
+		%include "ejercicio4.asm"
 
 
-mensaje db 'Grupo PUNPCKHQDQ',0
-mensaje_len equ $-mensaje 
+		; TODO: Inicializar las TSS   #
+		
+		; TODO: Inicializar correctamente los descriptores de TSS en la GDT #
+		
+		; TODO: Cargar el registro TR con el descriptor de la GDT de la TSS actual #
+		
+		; TODO: Habilitar la PIC #
+		
+		; TODO: Habilitar Interrupciones #
+		
+		; TODO: Saltar a la primer tarea #
+		
+		
 
 %include "a20.asm"
 
 %define ComienzoDirectorioPaginaPintor 0xA000   
 %define KORG 0x1200
-
-
-
 %define TASK1INIT 0x8000
 %define TASK2INIT 0x9000
 
 TIMES TASK1INIT - KORG - ($ - $$) db 0x00
+
 incbin "pintor.tsk"
 incbin "traductor.tsk"
 
 TIMES ComienzoDirectorioPaginaPintor - KORG - ($ - $$) db 0x00
-%include "paging.asm"
 
+%include "paging.asm"
 %include "gdt.asm"
 
 

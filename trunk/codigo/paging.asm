@@ -1,14 +1,14 @@
 BITS 32
 
 page_dir_pintor:			;arranca en la posicion 0xA000
-	dd 	0x0000C003 		;la primer entrada apunta a la pagina ubicada en 0xC000, supervisor|read/write|presente
+	dd 	0x0000C003 		;la primer entrada apunta a la tabla de pagina ubicada en 0xC000, supervisor|read/write|presente
 	
 %rep	0x400 - 1
 	dd	0x00000002		;supervisor, read/write, not present
 %endrep
 
 page_dir_traductorykernel:		;arranca en la posicion 0xB000
-	dd 	0x0000D003 		;la primer entrada apunta a la pagina ubicada en 0xC000, supervisor|read/write|presente
+	dd 	0x0000D003 		;la primer entrada apunta a la tabla de pagina ubicada en 0xD000, supervisor|read/write|presente
 	
 %rep	0x400 - 1
 	dd	0x00000002		;supervisor, read/write, not present
