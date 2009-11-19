@@ -46,19 +46,7 @@ bienvenida:
 	; Ejercicio 4
 	
 		%include "ejercicio4.asm"
-
-
-		; TODO: Inicializar las TSS   #
-		
-		; TODO: Inicializar correctamente los descriptores de TSS en la GDT #
-		
-		; TODO: Cargar el registro TR con el descriptor de la GDT de la TSS actual #
-		
-		; TODO: Habilitar la PIC #
-		
-		; TODO: Habilitar Interrupciones #
-		
-		; TODO: Saltar a la primer tarea #
+		jmp $
 		
 		
 
