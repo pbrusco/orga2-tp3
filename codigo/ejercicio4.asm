@@ -1,7 +1,7 @@
 %define TASK1INIT 0x8000
 %define TASK2INIT 0x9000
-%define PILATASK1 0x15400
-%define PILATASK2 0x16400 
+%define PILATASK1 0x16000-0x4			; 16000 - 15000 una pagina de pila para la tarea 1
+%define PILATASK2 0x17000-0x4 			; 17000 - 16000 una pagina de pila para la tarea 2
 
 ; Inicializo la TSS de la tarea pintor
 	
@@ -91,24 +91,18 @@
 	mov [edi+4], al			;escribe la base_23:16 para el descriptor 0x30
 	mov [edi+7], ah			;escribe la base_31:24 para el descriptor 0x30
 
-xchg bx,bx
 ; Cargo el registro de tareas
 	mov ax, 0x20		
 	ltr ax
-xchg bx, bx
 
 ; Inicializo el PIC
 	mov al, 0x00
 	out 0x21, al
 
-xchg bx, bx
+
 ; Habilito las interrupciones
 	sti
+
 xchg bx, bx
 ; Paso a la primer tarea
 jmp 0x28:0
-
-xchg bx, bx
-
-jmp $
-		

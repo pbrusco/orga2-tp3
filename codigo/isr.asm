@@ -206,18 +206,26 @@ _isr13:
 
 _isr20: 
 	cli
-
-	;vamos a avisar que se atendio vio..
-		
 	call next_clock
-		
 	mov al, 0x20
 	out 0x20, al
 
+	
+	cmp dword [isrnumero], 1
+	je tarea2
+	cmp dword [isrnumero], 3
+	je tarea2
+tarea1:
+	; eip
 	sti
+	jmp 0x28:0
 	iret
 
-
+tarea2:
+	sti	
+	jmp 0x30:0
+	iret
+	
 
 _isr21: 
 	cli
