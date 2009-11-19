@@ -34,13 +34,13 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support: vbe 
-00000000000i[MEM0 ] allocated memory at 0xb4bac008. after alignment, vector=0xb4bad000
+00000000000i[MEM0 ] allocated memory at 0xb4b1b008. after alignment, vector=0xb4b1c000
 00000000000i[MEM0 ] 32,00MB
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/home/mabianchi/bochs-2.4/share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/40448 ('/home/mabianchi/bochs-2.4/share/bochs/VGABIOS-lgpl-latest')
 00000000000e[DEV  ] Bochs is not compiled with PCI support
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Thu Nov 19 19:20:28 2009 (time0=1258669228)
+00000000000i[CMOS ] Setting initial clock to: Thu Nov 19 19:57:09 2009 (time0=1258671429)
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[DMA  ] channel 2 used by Floppy Drive
 00000000000i[FDD  ] fd0: './diskette.img' ro=0, h=2,t=80,spt=18
@@ -102,26 +102,25 @@
 00000873678i[BIOS ] bios_table_cur_addr: 0x000fbb94
 00002500000i[XGUI ] charmap update. Font Height is 16
 00153228420i[BIOS ] Booting from 0000:7c00
-00235700775i[CPU0 ] [235700775] Stopped on MAGIC BREAKPOINT
-01639384461i[     ] Ctrl-C detected in signal handler.
-01639384462i[     ] dbg: Quit
-01639384462i[CPU0 ] CPU is in protected mode (active)
-01639384462i[CPU0 ] CS.d_b = 32 bit
-01639384462i[CPU0 ] SS.d_b = 32 bit
-01639384462i[CPU0 ] | EAX=00000f00  EBX=000b80c4  ECX=0000003a  EDX=00000014
-01639384462i[CPU0 ] | ESP=00016ffc  EBP=00016ffc  ESI=000100c4  EDI=0001820a
-01639384462i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af PF cf
-01639384462i[CPU0 ] | SEG selector     base    limit G D
-01639384462i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
-01639384462i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
-01639384462i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-01639384462i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-01639384462i[CPU0 ] |  ES:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-01639384462i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-01639384462i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-01639384462i[CPU0 ] | EIP=00009028 (00009028)
-01639384462i[CPU0 ] | CR0=0xe0000019 CR2=0x00000000
-01639384462i[CPU0 ] | CR3=0x0000b000 CR4=0x00000000
-01639384462i[CMOS ] Last time is 1258669260 (Thu Nov 19 19:21:00 2009)
-01639384462i[XGUI ] Exit
-01639384462i[CTRL ] quit_sim called with exit code 0
+03970533290i[     ] Ctrl-C detected in signal handler.
+03970533291i[     ] dbg: Quit
+03970533291i[CPU0 ] CPU is in protected mode (active)
+03970533291i[CPU0 ] CS.d_b = 32 bit
+03970533291i[CPU0 ] SS.d_b = 32 bit
+03970533291i[CPU0 ] | EAX=00008e62  EBX=000b8e62  ECX=0000001f  EDX=0000e523
+03970533291i[CPU0 ] | ESP=00016fec  EBP=00016ffc  ESI=00010e62  EDI=00019000
+03970533291i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df if tf sf zf af PF cf
+03970533291i[CPU0 ] | SEG selector     base    limit G D
+03970533291i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
+03970533291i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
+03970533291i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+03970533291i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+03970533291i[CPU0 ] |  ES:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+03970533291i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+03970533291i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+03970533291i[CPU0 ] | EIP=0000e903 (0000e903)
+03970533291i[CPU0 ] | CR0=0xe0000019 CR2=0x00019000
+03970533291i[CPU0 ] | CR3=0x0000b000 CR4=0x00000000
+03970533291i[CMOS ] Last time is 1258671508 (Thu Nov 19 19:58:28 2009)
+03970533291i[XGUI ] Exit
+03970533291i[CTRL ] quit_sim called with exit code 0

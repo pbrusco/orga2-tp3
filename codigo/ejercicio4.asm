@@ -103,6 +103,5 @@
 ; Habilito las interrupciones
 	sti
 
-xchg bx, bx
 ; Paso a la primer tarea
 jmp 0x28:0
