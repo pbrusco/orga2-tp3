@@ -64,10 +64,12 @@ bienvenida:
 
 %include "a20.asm"
 
-%define ComienzoDirectorioPaginaPintor 0xA000   
+%define ComienzoDirectorioPaginaPintor 0xA000
 %define KORG 0x1200
 %define TASK1INIT 0x8000
 %define TASK2INIT 0x9000
+%define PILATASK1 0x15400
+%define PILATASK2 0x16400 
 
 TIMES TASK1INIT - KORG - ($ - $$) db 0x00
 
@@ -78,6 +80,3 @@ TIMES ComienzoDirectorioPaginaPintor - KORG - ($ - $$) db 0x00
 
 %include "paging.asm"
 %include "gdt.asm"
-
-
-
