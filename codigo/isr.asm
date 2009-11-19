@@ -216,7 +216,6 @@ _isr20:
 	cmp dword [isrnumero], 3
 	je tarea2
 tarea1:
-	; eip
 	sti
 	jmp 0x28:0
 	iret
