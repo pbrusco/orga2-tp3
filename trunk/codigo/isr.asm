@@ -260,6 +260,7 @@ next_clock:
 	popad
 	ret
 		
+pantallazo: db '0'
 isrmessage: db 'Relos:'
 isrnumero: dd 0x00000000
 isrmessage1: db '|'
@@ -267,5 +268,4 @@ isrmessage2: db '/'
 isrmessage3: db '-'
 isrmessage4: db '\'
 
-pantallazo: db '0'
 
