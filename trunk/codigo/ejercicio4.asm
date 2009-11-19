@@ -1,73 +1,70 @@
+%define TASK1INIT 0x8000
+%define TASK2INIT 0x9000
+%define PILATASK1 0x15400
+%define PILATASK2 0x16400 
+
 ; Inicializo la TSS de la tarea pintor
 	
-	mov edi, tsss			;me salteo la primera tss (104 bytes)
+	mov edi, tsss				;me salteo la primera tss (104 bytes)
 	add edi, 104			
-	add edi, 4
-	mov [edi], esp			;guardo la base de la pila del nivel 0
-	add edi, 4
-	mov word [edi], 0x10		;guarda el selector de segmento de datos
-	add edi, 20
-	mov eax, page_dir_pintor	;guardamos el CR3 de la tarea pintor
+	add edi, 28
+	mov eax, page_dir_pintor		;CR3
 	mov [edi], eax
 	add edi, 4
-	mov dword [edi], 0x8000		;guarda el eip de la tarea pintor
+	mov dword [edi], TASK1INIT		;EIP
 	add edi, 4
-	mov dword [edi], 0x202		;habilita interrupciones
+	mov dword [edi], 0x202			;EFLAGS
 	add edi, 20
-	mov dword [edi], 0x15000	;guarda el esp de la tarea pintor
+	mov dword [edi], PILATASK1		;ESP
 	add edi, 4	
-	mov dword [edi], 0x15000	;guarda el ebp de la tarea pintor
+	mov dword [edi], PILATASK1		;EBP
 	add edi, 12
-	mov word [edi], 0x10
+	mov word [edi], 0x10			;ES
+	add edi, 4			
+	mov word [edi], 0x8			;CS
 	add edi, 4
-	mov word [edi], 0x8
+	mov word [edi], 0x10			;SS
 	add edi, 4
-	mov word [edi], 0x10
+	mov word [edi], 0x10			;DS
 	add edi, 4
-	mov word [edi], 0x10
-	add edi, 4
-	mov word [edi], 0x10
-	add edi, 4
-	mov word [edi], 0x10
+	mov word [edi], 0x10			;FS
+	add edi, 4	
+	mov word [edi], 0x10			;GS
 
 
 ; Inicializo la TSS de la tarea traductor
 	
 	mov edi, tsss				;me salteo las dos primeras tss (208 bytes)
 	add edi, 208				
-	add edi, 4
-	mov [edi], esp				;guardo la base de la pila del nivel 0
-	add edi, 4
-	mov word [edi], 0x10			;guarda el selector de segmento de datos
-	add edi, 20
-	mov eax, page_dir_traductorykernel	;guardamos el CR3 de la tarea traductor y kernel
+	add edi, 28
+	mov eax, page_dir_traductorykernel	;CR3 
 	mov [edi], eax
 	add edi, 4
-	mov dword [edi], 0x9000			;guarda el eip de la tarea pintor
+	mov dword [edi], TASK2INIT		;EIP
 	add edi, 4
-	mov dword [edi], 0x202			;habilita interrupciones
+	mov dword [edi], 0x202			;EFLAGS
 	add edi, 20
-	mov dword [edi], 0x16000		;guarda el esp de la tarea traductor
+	mov dword [edi], PILATASK2		;ESP
 	add edi, 4		
-	mov dword [edi], 0x16000		;guarda el ebp de la tarea traductor
+	mov dword [edi], PILATASK2		;EBP
 	add edi, 12
-	mov word [edi], 0x10
+	mov word [edi], 0x10			;ES
 	add edi, 4
-	mov word [edi], 0x8
+	mov word [edi], 0x8			;CS
 	add edi, 4
-	mov word [edi], 0x10
+	mov word [edi], 0x10			;SS
 	add edi, 4
-	mov word [edi], 0x10
+	mov word [edi], 0x10			;DS
 	add edi, 4
-	mov word [edi], 0x10
+	mov word [edi], 0x10			;FS
 	add edi, 4
-	mov word [edi], 0x10
+	mov word [edi], 0x10			;GS
 
 
 ; Actualizo los descriptores de la GDT
 
-	mov edi, gdt
-	add edi, 0x20			;se posiciona en la primer entrada de tss de la gdt
+	mov edi, gdt			;se posiciona en la primer entrada de tss de la gdt
+	add edi, 0x20			
 
 	; Tarea 0
 	mov eax, tsss
