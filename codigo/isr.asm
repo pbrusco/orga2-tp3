@@ -228,7 +228,7 @@ tarea2:
 
 _isr21: 
 	cli
-	pushad
+	push edx
 	in al,0x60
 	
 	
@@ -238,7 +238,7 @@ _isr21:
 
 	mov al, 0x20
 	out 0x20, al
-	popad
+	pop edx
 	sti
 	iret
 

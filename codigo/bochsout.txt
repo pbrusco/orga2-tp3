@@ -34,13 +34,13 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support: vbe 
-00000000000i[MEM0 ] allocated memory at 0xb52f9008. after alignment, vector=0xb52fa000
+00000000000i[MEM0 ] allocated memory at 0xb523e008. after alignment, vector=0xb523f000
 00000000000i[MEM0 ] 32,00MB
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/home/mariano/bochs-2.4//share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/40448 ('/home/mariano/bochs-2.4//share/bochs/VGABIOS-lgpl-latest')
 00000000000e[DEV  ] Bochs is not compiled with PCI support
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Thu Nov 19 22:27:45 2009 (time0=1258680465)
+00000000000i[CMOS ] Setting initial clock to: Thu Nov 19 22:36:19 2009 (time0=1258680979)
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[DMA  ] channel 2 used by Floppy Drive
 00000000000i[FDD  ] fd0: './diskette.img' ro=0, h=2,t=80,spt=18
@@ -102,25 +102,45 @@
 00000873678i[BIOS ] bios_table_cur_addr: 0x000fbb94
 00002500000i[XGUI ] charmap update. Font Height is 16
 00153228420i[BIOS ] Booting from 0000:7c00
-00407575462i[     ] Ctrl-C detected in signal handler.
-00407575463i[     ] dbg: Quit
-00407575463i[CPU0 ] CPU is in protected mode (active)
-00407575463i[CPU0 ] CS.d_b = 32 bit
-00407575463i[CPU0 ] SS.d_b = 32 bit
-00407575463i[CPU0 ] | EAX=00000f20  EBX=000b8376  ECX=00000019  EDX=00000010
-00407575463i[CPU0 ] | ESP=00016ffc  EBP=00016ffc  ESI=00010378  EDI=000184cd
-00407575463i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
-00407575463i[CPU0 ] | SEG selector     base    limit G D
-00407575463i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
-00407575463i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
-00407575463i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00407575463i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00407575463i[CPU0 ] |  ES:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00407575463i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00407575463i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00407575463i[CPU0 ] | EIP=0000902b (0000902b)
-00407575463i[CPU0 ] | CR0=0xe0000019 CR2=0x00000000
-00407575463i[CPU0 ] | CR3=0x0000b000 CR4=0x00000000
-00407575463i[CMOS ] Last time is 1258680473 (Thu Nov 19 22:27:53 2009)
-00407575463i[XGUI ] Exit
-00407575463i[CTRL ] quit_sim called with exit code 0
+00268700000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00270450000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00274850000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00276450000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00286550000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00287450000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00289900000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00290950000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00300550000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00302700000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00304100000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00305850000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00307600000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00308900000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00310700000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00312500000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00314300000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00315750000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00318300000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00319800000e[XGUI ] xkeypress(): keysym f1 unhandled!
+00358172266i[     ] Ctrl-C detected in signal handler.
+00358172267i[     ] dbg: Quit
+00358172267i[CPU0 ] CPU is in protected mode (active)
+00358172267i[CPU0 ] CS.d_b = 32 bit
+00358172267i[CPU0 ] SS.d_b = 32 bit
+00358172267i[CPU0 ] | EAX=00000f20  EBX=000b8422  ECX=00000011  EDX=0000000f
+00358172267i[CPU0 ] | ESP=00016ffc  EBP=00016ffc  ESI=00010422  EDI=0001857c
+00358172267i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
+00358172267i[CPU0 ] | SEG selector     base    limit G D
+00358172267i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
+00358172267i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
+00358172267i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00358172267i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00358172267i[CPU0 ] |  ES:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00358172267i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00358172267i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00358172267i[CPU0 ] | EIP=00009028 (00009028)
+00358172267i[CPU0 ] | CR0=0xe0000019 CR2=0x00000000
+00358172267i[CPU0 ] | CR3=0x0000b000 CR4=0x00000000
+00358172267i[CMOS ] Last time is 1258680986 (Thu Nov 19 22:36:26 2009)
+00358172267i[XGUI ] Exit
+00358172267i[CTRL ] quit_sim called with exit code 0
