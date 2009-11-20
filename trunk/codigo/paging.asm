@@ -79,7 +79,7 @@ dd i | 2				;supervisor, read/write, no presente
 %endrep
 
 
-;B8000 - B8FFF --> 10000 - 10FFF
+					;B8000 - B8FFF --> 10000 - 10FFF
 dd 	0x10003				;supervisor, read/write, present
 
 

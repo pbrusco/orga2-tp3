@@ -2,14 +2,14 @@ mov eax, page_dir_traductorykernel	;cargo la direccion del directorio en cr3
 mov cr3, eax
 
 mov eax, cr0				
-or  eax, 0x80000000		;habilito paginacion
+or  eax, 0x80000000			;habilito paginacion
 mov cr0, eax
 
 mov ecx, mensaje_len		
 mov ah, 0x0c
 mov esi, mensaje
 xor edi, edi
-add edi, (160 * 1) + 2 + 0x18000	;escribo en video a traves de la pagina 0x13000 del pintor, que esta mapeada a 0xB8000
+add edi, (160 * 1) + 2 + 0x13000	;escribo en video a traves de la pagina 0x13000 del traductor y kernel, que esta mapeada a 0xB8000
 
 			
 mov ecx, mensaje_len

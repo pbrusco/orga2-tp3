@@ -11,7 +11,7 @@ extern pic1_intr_end
 global _isr0, _isr1, _isr2, _isr3, _isr4, _isr5, _isr6, _isr7, _isr8, _isr9, _isrA, _isrB, _isrC, _isrD, _isrE, _isrF, _isr10, _isr11, _isr12, _isr13, _isr20, _isr21
 
 
-msgisr0: db 'HOLA MUNDO!! ehhhhhh digo.. dividiste por cero, sos un zoquete! eso te pasa por andar tocando lo que no debes.. si, a vos te digo.. cual es tu problema? eh? no.. no apretes ctrl c .. Noooooooooooooo!!!!!!!!!'
+msgisr0: db '0'
 msgisr0_len equ $-msgisr0
 
 msgisr1: db '1'
@@ -228,16 +228,17 @@ tarea2:
 
 _isr21: 
 	cli
-	;xor eax, eax
+	pushad
 	in al,0x60
 	
 	
 	mov edx, pantallazo
 	IMPRIMIR_TEXTO edx, 1, 0x3C, 1 , 1, 0x13000
 	inc byte [pantallazo]
-		
+
 	mov al, 0x20
 	out 0x20, al
+	popad
 	sti
 	iret
 
