@@ -1,6 +1,38 @@
 \section{Desarrollo}
 \paragraph{}
-A continuaci\'on se presentan los pasos llevados a cabo y las desiciones tomadas para la resoluci\'on de cada ejercicio.
+A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'odigo de cada uno de los ejercicios
 
 \subsection{Ejercicio 1}
+\begin{itemize}
+ \item Habilitamos el Gate A20 y verificamos que est\'e habilitado para poder direccionar memoria m\'as all\'a del megabyte
+ \item Armamos en un archivo en lenguaje C una Tabla Global de Descriptores (GDT) en la que definimos 4 descriptores de segmento: 
+	\begin{itemize}
+	\item segmento nulo
+	\item segmento de c\'odigo
+	\item segmento de datos
+	\item segmento de memoria de video
+	\end{itemize}
 
+ \item Cargamos el registro LGDT con la direccion base  y el l\'imite de la GDT que armamos en el paso previo.
+
+ \item Copiamos el contenido Registro de Control 0 (CR0) y seteamos el primer bit (PE) para habilitar el modo protegido del procesador. Luego pisamos el contenido de CR0 con la copia modificada.
+
+ \item Cargamos en el selector CS la posicion que tiene dentro de la GDT el descriptor del segmento de c\'odigo. Para ello realizamos, conforme explica el manual de Intel\footnote{}, un salto lejano a la posici\'on de una etiqueta donde comienza el c\'odigo de 32 bits a ejecutarse en modo protegido.
+
+ \item Se le indica al compilador que la el c\'odigo que sigue es de 32 bits, y seguidamente actualizamos los dem\'as selectores (DS, FS, GS, SS) cargandoles la posicion que tiene dentro de la GDT el descriptor del segmento de datos.
+
+ \item Cargamos en ES la posici\'on que tiene dentro de la GDT el descriptor del segmento de memoria de video para luego poder escribir por pantalla.
+ 
+ \item Escribimos en pantalla un marco de '#'
+\end{itemize}
+
+\subsection{Ejercicio 2}
+\begin{itemize}
+ \item 
+ \item 
+ \item 
+ \item 
+ \item 
+ \item 
+ \item 
+\end{itemize}
