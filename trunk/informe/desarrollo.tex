@@ -13,7 +13,7 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 	\item segmento de memoria de video
 	\end{itemize}
 
- \item Cargamos el registro LGDT con la direccion base  y el l\'imite de la GDT que armamos en el paso previo.
+ \item Cargamos el registro de la GDT (GDTR) con la direccion base  y el l\'imite de la GDT que armamos en el paso previo.
 
  \item Copiamos el contenido Registro de Control 0 (CR0) y seteamos el primer bit (PE) para habilitar el modo protegido del procesador. Luego pisamos el contenido de CR0 con la copia modificada.
 
