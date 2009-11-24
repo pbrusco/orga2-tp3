@@ -2,9 +2,6 @@
 	call enable_A20
 	call check_A20
 	
-; deshabilito interrupciones
-	cli						
-
 ; cargo en el registro LGDT la direccion base de la GDT que armamos en gts.asm
 	lgdt[GDT_DESC]			
 

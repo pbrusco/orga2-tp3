@@ -1,8 +1,3 @@
-%define TASK1INIT 0x8000
-%define TASK2INIT 0x9000
-%define PILATASK1 0x16000-0x4			; 16000 - 15000 una pagina de pila para la tarea 1
-%define PILATASK2 0x17000-0x4 			; 17000 - 16000 una pagina de pila para la tarea 2
-
 ; Inicializo la TSS de la tarea pintor
 	
 	mov edi, tsss				;me salteo la primera tss (104 bytes)

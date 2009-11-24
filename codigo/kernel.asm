@@ -2,23 +2,24 @@ BITS 16		; le indico al compilador que el codigo que prosigue es de 16 bits
 
 global start
 extern GDT_DESC
-extern gdt;
+extern gdt
 extern IDT_DESC
 extern idtFill
-extern tsss;
+extern tsss
 
 %define ComienzoDirectorioPaginaPintor 0xA000
-%define KORG 0x1200
-%define TASK1INIT 0x8000
-%define TASK2INIT 0x9000
-%define PILATASK1 0x15400
-%define PILATASK2 0x16400 
+%define KORG 0x1200				; posicion de inicio de kernel
+%define TASK1INIT 0x8000			; posicion de inicio de la tarea pintor
+%define TASK2INIT 0x9000			; posicion de inicio de la tarea traductor
+%define PILATASK1 0x15400			; 15000 - 15400 una pagina de pila para la tarea 1
+%define PILATASK2 0x16400 			; 16000 - 16400 una pagina de pila para la tarea 2
 
 
 ; incluimos al principio del kernel el codigo de las macros para imprimir en pantalla en modo real
 	%include "macrosmodoreal.mac"
 
 start:
+
 ; deshabilito interrupciones
 	cli					
 	jmp 	bienvenida
@@ -33,7 +34,7 @@ start:
 bienvenida:
 	
 	; mensaje de bienvenida
-	IMPRIMIR_MODO_REAL iniciando, iniciando_len, 0x07, 0, 0
+		IMPRIMIR_MODO_REAL iniciando, iniciando_len, 0x07, 0, 0
 
 	; ejercicio 1
 		%include "ejercicio1.asm"
@@ -64,5 +65,5 @@ bienvenida:
 ;  rellenamos con 0's hasta la posicion donde inicia el Directorio de Paginas de la tarea pintor (0xA000)
 	TIMES ComienzoDirectorioPaginaPintor - KORG - ($ - $$) db 0x00
 
-; bla
+; incluimos los Directorios de Tablas de Paginas y las Tablas de Paginas del kernel y de las tareas pintor y traductor
 	%include "paging.asm"
