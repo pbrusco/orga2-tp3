@@ -1,26 +1,37 @@
-bits 16
-call disable_A20
-call check_A20
-call enable_A20
-call check_A20
-cli			;deshabilito interrupciones
+; habilito el Gate A20 y checkeo que este habilitado
+	call enable_A20
+	call check_A20
+	
+; deshabilito interrupciones
+	cli						
 
-lgdt[GDT_DESC]		;carga el registro lgdt con los datos de la gtr que armamos mas abajo
-mov eax, cr0
-or eax, 1
-mov cr0, eax		;habilito modo protegido
-jmp 0x08:modo_protegido
-bits 32
+; cargo en el registro LGDT la direccion base de la GDT que armamos en gts.asm
+	lgdt[GDT_DESC]			
+
+; seteo el bit PE del registro de control CR0 para luego poder habilitar el modo protegido
+	mov eax, cr0			
+	or eax, 1
+	mov cr0, eax
+
+; habilito modo protegido cargando en CS la posicion de memoria del descriptor del segmento de codigo de la GDT
+	jmp 0x08:modo_protegido
+
+
+bits 32		; le indico al compilador que el codigo que prosigue es de 32 bits
 modo_protegido:
+	
+; actualizo los selectores para que apunten al descriptor del segmento de datos en la GDT
 	mov ax, 0x10
 	mov ds, ax
 	mov fs, ax
 	mov gs, ax
 	mov ss, ax
+
+; cargo en ES la posicion de memoria del descriptor del segmento de video en la GDT	
 	mov ax, 0x18
-	mov es, ax	;A ES LE PONEMOS 18h = 24d (3*8) porque le estamos indicando donde debe escribir el video,
+	mov es, ax	
 	
-	;aca hacemos el mostrar en pantalla que hicimos la clase anterior
+; a continuacion cambiamos el color del fondo e imprimimos el marco de la pantalla
 	mov edi, 0
 	mov al, '*'
 	mov ah, 0xc0
@@ -42,9 +53,3 @@ modo_protegido:
 		mov [es:edi], ax
 		add edi, 2
 		loop cicloFilaAbajo
-
-
-
-
-
-
