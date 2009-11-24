@@ -11,73 +11,68 @@ extern pic1_intr_end
 global _isr0, _isr1, _isr2, _isr3, _isr4, _isr5, _isr6, _isr7, _isr8, _isr9, _isrA, _isrB, _isrC, _isrD, _isrE, _isrF, _isr10, _isr11, _isr12, _isr13, _isr20, _isr21
 
 
-msgisr0: db '0'
+msgisr0: db 'Int 0h : #DE (Error de division)'
 msgisr0_len equ $-msgisr0
 
-msgisr1: db '1'
+msgisr1: db 'Int 1h : #DB (Reservado)'
 msgisr1_len equ $-msgisr1
 
-msgisr2: db '2'
+msgisr2: db 'Int 2h : Interrupcion NMI'
 msgisr2_len equ $-msgisr2
 
-msgisr3: db '3'
+msgisr3: db 'Int 3h : #BP (Breakpoint)'
 msgisr3_len equ $-msgisr3
 
-msgisr4: db '4'
+msgisr4: db 'Int 4h : #OF (Overflow)'
 msgisr4_len equ $-msgisr4
 
-msgisr5: db '5'
+msgisr5: db 'Int 5h : #BR (Rango limite excedido)'
 msgisr5_len equ $-msgisr5
 
-msgisr6: db '6'
+msgisr6: db 'Int 6h : #UD (Codigo de operacion invalido)'
 msgisr6_len equ $-msgisr6
 
-msgisr7: db '7'
+msgisr7: db 'Int 7h : #NM (Dispositivo no disponible)'
 msgisr7_len equ $-msgisr7
 
-msgisr8: db '8'
+msgisr8: db 'Int 8h : #DF (Doble falta)'
 msgisr8_len equ $-msgisr8
 
 
-msgisr9: db '9'
+msgisr9: db 'Int 9h : (Segmento de coprocesador excedido)'
 msgisr9_len equ $-msgisr9
 
-msgisrA: db 'A'
+msgisrA: db 'Int Ah : #TS (TSS Invalida)'
 msgisrA_len equ $-msgisrA
 
-msgisrB: db 'B'
+msgisrB: db 'Int Bh : #NP (Segmento no presente)'
 msgisrB_len equ $-msgisrB
 
-msgisrC: db 'C'
+msgisrC: db 'Int Ch : #SS (Fallo de segmento de pila)'
 msgisrC_len equ $-msgisrC
 
-msgisrD: db 'D'
+msgisrD: db 'Int Dh : #GP (Proteccion general)'
 msgisrD_len equ $-msgisrD
 
-msgisrE: db 'E'
+msgisrE: db 'Int Eh : #PF (Fallo de pagina)'
 msgisrE_len equ $-msgisrE
 
-msgisrF: db 'F'
+msgisrF: db 'Int Fh : -- (Reservado para intel)'
 msgisrF_len equ $-msgisrF
 
-msgisr10: db '10'
+msgisr10: db 'Int 10h : #MF (Error matematico en la FPU)'
 msgisr10_len equ $-msgisr10
 
-msgisr11: db '11'
+msgisr11: db 'Int 11h : #AC (Chequeo de alineacion)'
 msgisr11_len equ $-msgisr11
 
-msgisr12: db '12'
+msgisr12: db 'Int 12h : #MC (Chequeo de maquina)'
 msgisr12_len equ $-msgisr12
 
-msgisr13: db '13'
+msgisr13: db 'Int 13h : #XM (Excepcion de punto flotante SIMD)'
 msgisr13_len equ $-msgisr13
 
-
-
-msgisr20: db 'Interrupcion : Timer tick'
-msgisr20_len equ $-msgisr20
-
-msgisr21: db 'Interrupcion : Tecleaste Algo'
+msgisr21: db 'Int 21h : Tecleaste Algo'
 msgisr21_len equ $-msgisr21
 
 
@@ -85,7 +80,7 @@ msgisr21_len equ $-msgisr21
 _isr0:
 	cli
 	mov edx, msgisr0
-	IMPRIMIR_TEXTO edx, msgisr0_len, 0xEC, 10, 0, 0x13000
+	IMPRIMIR_TEXTO edx, msgisr0_len, 0x0C, 0, 0, 0x13000
 	jmp $
 	
 _isr1:
@@ -228,17 +223,13 @@ tarea2:
 
 _isr21: 
 	cli
-	push edx
 	in al,0x60
-	
-	
-	mov edx, pantallazo
-	IMPRIMIR_TEXTO edx, 1, 0x3C, 1 , 1, 0x13000
-	inc byte [pantallazo]
-
+	push edx
+	mov edx, msgisr21
+	IMPRIMIR_TEXTO edx, msgisr21_len, 0x0C, 0, 0, 0x13000
+	pop edx
 	mov al, 0x20
 	out 0x20, al
-	pop edx
 	sti
 	iret
 
