@@ -10,7 +10,7 @@
 	or eax, 1
 	mov cr0, eax
 
-; habilito modo protegido cargando en CS la posicion de memoria del descriptor del segmento de codigo de la GDT
+; habilito modo protegido cargando en CS la posicion dentro de la GDT del descriptor del segmento de codigo
 	jmp 0x08:modo_protegido
 
 
@@ -24,11 +24,11 @@ modo_protegido:
 	mov gs, ax
 	mov ss, ax
 
-; cargo en ES la posicion de memoria del descriptor del segmento de video en la GDT	
+; cargo en ES la posicion dentro de la GDT del descriptor del segmento de video
 	mov ax, 0x18
 	mov es, ax	
 	
-; a continuacion cambiamos el color del fondo e imprimimos el marco de la pantalla
+; a continuacion cambiamos el color del fondo de la pantalla e imprimimos un marco de '#'
 	mov edi, 0
 	mov al, '*'
 	mov ah, 0xc0
