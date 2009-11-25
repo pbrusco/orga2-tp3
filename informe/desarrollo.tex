@@ -28,8 +28,8 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 
 \subsection{Ejercicio 2}
 \begin{itemize}
- \item 
- \item 
+ \item Definimos un Directorio de Tablas de Paginas para la tarea pintor con un único selector que apunta a la única Tabla de Paginas de la tarea. Del mismo modo hacemos lo propio con el Directorio de Tablas de Paginas de la tarea traductor y del kernel que comparten la misma Tabla de Paginas. En ambos directorios el resto de las entradas son definidas como nulas.
+ \item Definimos una Tabla de Paginas de la tarea Pintor que realiza identity mapping en todas las páginas salvo en la pagina que empieza en la posicion 0x13000 (espacio de escritura del pintor) que es mapeada a pagina que inicia en la posicion 0xB8000 (memoria de video), y la pagina que empieza en la posición 0xB8000 que es mapeada a la pagina que inicia en la posicion 0x10000 (espacio de lectura del traductor). Por otra parte, se marcan todas las paginas como no presentes salvo las paginas correspondientes al kernel, a la GDT,IDT,TSS y rutinas de C, al espacio de escritura del pintor, a la pila del pintor y a la memoria de video del kernel
  \item 
  \item 
  \item 
