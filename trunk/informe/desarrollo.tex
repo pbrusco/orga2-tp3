@@ -19,7 +19,7 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 
  \item Cargamos en el selector CS la posicion que tiene dentro de la GDT el descriptor del segmento de c\'odigo. Para ello realizamos, conforme explica el manual de Intel\footnote{Intel 64 and IA-32 Architectures Software Developer's Manual Volume 3A, Chapter 3 : Protected-Mode Memory Management}, un salto lejano a la posici\'on de una etiqueta donde comienza el c\'odigo de 32 bits a ejecutarse en modo protegido.
 
- \item Se le indica al compilador que la el c\'odigo que sigue es de 32 bits, y seguidamente actualizamos los dem\'as selectores (DS, FS, GS, SS) cargandoles la posicion que tiene dentro de la GDT el descriptor del segmento de datos.
+ \item Se le indica al compilador que el c\'odigo que sigue es de 32 bits, y seguidamente actualizamos los dem\'as selectores (DS, FS, GS, SS) cargandoles la posicion que tiene dentro de la GDT el descriptor del segmento de datos.
 
  \item Cargamos en ES la posici\'on que tiene dentro de la GDT el descriptor del segmento de memoria de video para luego poder escribir por pantalla.
  
