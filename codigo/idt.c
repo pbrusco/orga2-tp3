@@ -120,10 +120,6 @@ void idtFill() {
 	idt[33].offset_16_31 = (unsigned short) ((unsigned int)(&_isr21) >> 16 & (unsigned int) 0xFFFF);
 	
 
-	/*
-	 * TODO: Completar inicializacion de la IDT aqui
-	 * 
-	 */
 }
 
 /*

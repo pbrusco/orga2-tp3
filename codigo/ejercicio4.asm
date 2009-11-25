@@ -90,10 +90,6 @@
 	mov ax, 0x20		
 	ltr ax
 
-; Inicializo el PIC
-	mov al, 0x00
-	out 0x21, al
-
 
 ; Habilito las interrupciones
 	sti
