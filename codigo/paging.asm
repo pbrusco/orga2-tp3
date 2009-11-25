@@ -31,64 +31,64 @@ page_dir_traductorykernel:
 ; declaramos la Tabla de Pagina de la tarea Pintor
 page_table_pintor:
 
-	;0000 - 8FFF --> 0000 - 8FFF
+	; Pagina presente // 0000 - 8FFF --> 0000 - 8FFF
 		%assign i 0x0000	
 		%rep    0x9		
 			dd i | 3		;supervisor, read/write, presente
 		%assign i i+4096
 		%endrep
 
-	;9000 - DFFF --> 9000 - DFFF
+	; Pagina NO presente // 9000 - DFFF --> 9000 - DFFF
 		%assign i 0x9000
 		%rep    0x5	
 			dd i | 2		;supervisor, read/write, no presente
 		%assign i i+4096
 		%endrep
 		
-	;E000 - FFFF --> E000 - FFFF
+	; Pagina presente // E000 - FFFF --> E000 - FFFF
 		%assign i 0xE000
 		%rep    0x2
 			dd 	i | 3		;supervisor, read/write, present			
 		%assign i i+4096 
 		%endrep
 		
-	;10000 - 12FFF --> 10000 - 12FFF
+	; Pagina NO presente // 10000 - 12FFF --> 10000 - 12FFF
 		%assign i 0x10000			
 		%rep    0x3				
 			dd i | 2		;supervisor, read/write, no presente
 		%assign i i+4096
 		%endrep
 		
-	;13000 - 13FFF --> B8000 - B8FFF	
+	; Pagina presente // 13000 - 13FFF --> B8000 - B8FFF	
 		%assign i 0xB8000			
 		%rep    0x1
 			dd 	i | 3		;supervisor, read/write, present
 		%assign i i+4096 
 		%endrep
 		
-	;14000 - 14FFF --> 14000 - 14FFF
+	; Pagina NO presente // 14000 - 14FFF --> 14000 - 14FFF
 		%assign i 0x14000
 		%rep    0x1
 			dd 	i | 2		;supervisor, read/write, no presente
 		%endrep
 	
-	;15000 - 15FFF --> 15000 - 15FFF
+	; Pagina presente // 15000 - 15FFF --> 15000 - 15FFF
 		%assign i 0x15000		
 		%rep    0x1
 			dd 	i | 3		;supervisor, read/write, present
 		%endrep
 		
-	;16000 - B7FFF --> 16000 - B7FFF
+	; Pagina NO presente // 16000 - B7FFF --> 16000 - B7FFF
 		%assign i 0x16000	
 		%rep    0xA2		
 			dd i | 2		;supervisor, read/write, no presente
 		%assign i i+4096
 		%endrep
 		
-	;B8000 - B8FFF --> 10000 - 10FFF
+	; Pagina presente // B8000 - B8FFF --> 10000 - 10FFF
 		dd 	0x10003			;supervisor, read/write, present
 	
-	;B9000 - 3FFFFF--> B9000 - 3FFFFF
+	; Pagina NO presente // B9000 - 3FFFFF--> B9000 - 3FFFFF
 		%assign i 0xB9000	
 		%rep    0x347	
 			dd i | 2		;supervisor, read/write, no presente
