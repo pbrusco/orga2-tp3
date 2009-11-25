@@ -30,7 +30,7 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 \begin{itemize}
  \item Definimos un Directorio de Tablas de Paginas para la tarea pintor con un \'unico selector que apunta a la \'unica Tabla de Paginas de la tarea. Del mismo modo hacemos lo propio con el Directorio de Tablas de Paginas de la tarea traductor y del kernel que comparten la misma Tabla de Paginas. En ambos directorios el resto de las entradas son definidas como nulas.
  \item Definimos una Tabla de P\'aginas de la tarea Pintor que realiza identity mapping en las p\'aginas correspondientes al kernel, a la GDT,IDT,TSS y rutinas de C, al espacio de escritura del pintor, a la pila del pintor y a la memoria de video del kernel y remapea la p\'agina que empieza en la posicion 0x13000 a la pagina que inicia en la posici\'on 0xB8000 (memoria de video), y la p\'agina que empieza en la posici\'on 0xB8000 a la p\'agina que inicia en la posici\'on 0x10000 (espacio de lectura del traductor). Por otra parte, se marcan todas las p\'aginas restantes como no presentes.
- \item Definimos una Tabla de P\'aginas para la tarea Traductor y el Kernel que realiza identity mapping en las p\'aginas correspondientes al kernel, a la GDT,IDT,TSS y rutinas de C, a los directorios y tablas de p\'aginas, a la tarea traductor, al espacio de lectura de la misma, a su pila y a la memoria de video y remapea la p\'agina que comienza en la posici\'on 0x13000 a la p\'agina que inicia en la posici\'on 0xB8000 y la p\'agina correspondiente a la posici\'on 0x18000 (espacio de escritura del traductor) a la p\'agina 0xB8000.
+ \item Definimos una Tabla de P\'aginas para la tarea Traductor y el Kernel que realiza identity mapping en las p\'aginas correspondientes al kernel, a la GDT,IDT,TSS y rutinas de C, a los directorios y tablas de p\'aginas, a la tarea traductor, al espacio de lectura de la misma, a su pila y a la memoria de video y remapea la p\'agina que comienza en la posici\'on 0x13000 a la p\'agina que inicia en la posici\'on 0xB8000 y la p\'agina correspondiente a la posici\'on 0x18000 (espacio de escritura del traductor) a la p\'agina 0xB8000. Todas las p\'aginas restantes se marcan como no presentes.
  \item Luego de creados los directorios de p\'aginas y las tablas de p\'aginas necesarias, se carga el registro CR3 con la direcci\'on del directorio de p\'aginas del traductor y kernel, para que una vez que se habilite la paginaci\'on, todo funcione como es debido.
  \item Luego, seteamos el bit 31 del registro de control CR0 (bit PG) para habilitar paginaci\'on.
  \item Finalmente, una vez que se habilit\'o paginaci\'on, procedemos a escribir por pantalla el nombre del grupo a trav\'es de la p\'agina 0x13000, que por como se remape\'o a la misma, es equivalente a escribir en la posici\'on 0xB8000 (memoria de video).
@@ -38,10 +38,10 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 
 \subsection{Ejercicio 3}
 \begin{itemize}
- \item Se armaron, en el archivo isr.asm, las rutinas de atenci\'on de interrupciones para cada excepci\'on del procesador y para las interrupciones del timertick y del teclado.
- \item Se llama a la funci\'on idtfill(), que arma un vector de interrupciones con los datos de las rutinas declaradas en el item anterior.
+ \item Se armaron, en el archivo isr.asm, las rutinas de atenci\'on de interrupciones para cada excepci\'on del procesador y para las interrupciones del timertick y del teclado. Adem\'as, se definieron los mensajes correspondientes a cada excepci\'on/interrupci\'on proveniente del procesador. De esta forma, uno puede saber por qu\'e motivo se colg\'o el kernel y a qu\'e excepci\'on/interrupci\'on corresponde el error que se produjo.
+ \item Se llama a la funci\'on \textit{idtFill()}, que arma un vector de interrupciones con los datos de las rutinas declaradas en el item anterior.
  \item Se remapean los PICs para que no se pisen las interrupciones, dejando las interrupciones provenientes del PIC1 en las posiciones 0x20 hasta 0x27 y las del PIC2 desde 0x28 hasta 0x2F.
- \item Finalmente, se carga el registro IDTR con la direcci\'on del vector proveniente de hacer idtfill y el tama\~no del mismo.
+ \item Finalmente, se carga el registro IDTR con la direcci\'on del vector proveniente del llamado \textit{idtFill()} y el tama\~no del mismo.
 \end{itemize}
 
 
