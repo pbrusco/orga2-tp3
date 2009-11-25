@@ -2,7 +2,7 @@
 	mov eax, page_dir_traductorykernel	
 	mov cr3, eax
 
-; seteo el bit PE del registro de control CR0 para luego poder habilitar paginacion
+; seteo el bit PG del registro de control CR0 para luego poder habilitar paginacion
 	mov eax, cr0				
 	or  eax, 0x80000000			
 	mov cr0, eax
