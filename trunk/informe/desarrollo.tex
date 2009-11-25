@@ -33,7 +33,7 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
  \item Definimos una Tabla de P\'aginas para la tarea Traductor y el Kernel que realiza identity mapping en las p\'aginas correspondientes al kernel, a la GDT,IDT,TSS y rutinas de C, a los directorios y tablas de p\'aginas, a la tarea traductor, al espacio de lectura de la misma, a su pila y a la memoria de video y remapea la p\'agina que comienza en la posici\'on 0x13000 a la p\'agina que inicia en la posici\'on 0xB8000 y la p\'agina correspondiente a la posici\'on 0x18000 (espacio de escritura del traductor) a la p\'agina 0xB8000. Todas las p\'aginas restantes se marcan como no presentes.
  \item Luego de creados los directorios de p\'aginas y las tablas de p\'aginas necesarias, se carga el registro CR3 con la direcci\'on del directorio de p\'aginas del traductor y kernel, para que una vez que se habilite la paginaci\'on, todo funcione como es debido.
  \item Luego, seteamos el bit 31 del registro de control CR0 (bit PG) para habilitar paginaci\'on.
- \item Finalmente, una vez que se habilit\'o paginaci\'on, procedemos a escribir por pantalla el nombre del grupo a trav\'es de la p\'agina 0x13000, que por como se remape\'o a la misma, es equivalente a escribir en la posici\'on 0xB8000 (memoria de video).
+ \item Finalmente, una vez que se habilit\'o paginaci\'on, procedemos a escribir por pantalla el nombre del grupo a trav\'es de la direcci\'on de memria 0x13000, que por como est\'a mapeado, es equivalente a escribir en la posici\'on 0xB8000 (memoria de video).
 \end{itemize}
 
 \subsection{Ejercicio 3}
