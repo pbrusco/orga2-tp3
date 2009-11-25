@@ -39,8 +39,8 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 
 \subsection{Ejercicio 3}
 \begin{itemize}
- \item Se armaron en el archivo isr.asm las rutinas de atenci\'on de interrupciones para cada excepci\'on del procesador y para las interrupciones del timertick y del teclado.
- \item Se llama a la funci\'on idtfill, que arma un vector de interrupciones con los datos de las rutinas declaradas en el item anterior.
+ \item Se armaron, en el archivo isr.asm, las rutinas de atenci\'on de interrupciones para cada excepci\'on del procesador y para las interrupciones del timertick y del teclado.
+ \item Se llama a la funci\'on idtfill(), que arma un vector de interrupciones con los datos de las rutinas declaradas en el item anterior.
  \item Se remapean los PICs para que no se pisen las interrupciones, dejando las interrupciones provenientes del PIC1 en las posiciones 0x20 hasta 0x27 y las del PIC2 desde 0x28 hasta 0x2F.
  \item Finalmente, se carga el registro IDTR con la direcci\'on del vector proveniente de hacer idtfill y el tama\~no del mismo.
 \end{itemize}
@@ -54,7 +54,7 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 		\item TSS del pintor
 		\item TSS del traductor
 	\end{itemize}
-	En estos a\'un no especificamos la base del comienzo de cada descriptor tss, ya que al estar declarados en c, no se puede saber a priori en que posici\'on de memoria se ubican.
+	En estos a\'un no especificamos la base del comienzo de cada descriptor tss, ya que desde c, es m\'as complicado conocer la posici\'on de memoria se ubican.
 
  \item Rellenamos desde assembler las tss con los datos que correspond\'ian (para pintor y traductor/kernel).\footnote{Esto se podr\'ia haber hecho desde c, pero se decidi\'o hacerlo de esta manera, ya que nos result\'o m\'as natural.}
  \item Luego, rellenamos las direcciones base correspondientes a cada tss en la gdt. Esto se realiza durante la ejecuci\'on, para evitar el problema antes mencionado.
