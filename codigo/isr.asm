@@ -214,13 +214,15 @@ global _isr0, _isr1, _isr2, _isr3, _isr4, _isr5, _isr6, _isr7, _isr8, _isr9, _is
 		je tareatraductor		;si isrnumero vale 1 o 3, voy a ejecutar la tarea del traductor
 	
 	tareapintor:
-		sti				;habilito las interrupciones antes que se guarde el contexto de la tarea del traductor
+						;habilito las interrupciones antes que se guarde el contexto de la tarea del traductor
 		jmp 0x28:0			;ejecuto la tarea del pintor
+		sti
 		iret				;cuando vuelvo a ejecutar la tarea del traductor, vuelvo a ejecutar desde la linea donde se interrumpio la tarea
 	
 	tareatraductor:
-		sti				;habilito las interrupciones antes que se guarde el contexto de la tarea del pintor
+						;habilito las interrupciones antes que se guarde el contexto de la tarea del pintor
 		jmp 0x30:0			;ejecuto la tarea del traductor
+		sti
 		iret				;;cuando vuelvo a ejecutar la tarea del pintor, vuelvo a ejecutar desde la linea donde se interrumpio la tarea
 		
 
