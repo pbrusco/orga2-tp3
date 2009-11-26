@@ -2,23 +2,17 @@
 #define __GDT_H__
 
 
-/*
- * Global Descriptor Table
- * Definicion de las estructuras de la GDT.
- */
+
+//Global Descriptor Table - Definicion de las estructuras de la GDT.
 #define GDT_COUNT 128
 
-/* 
- * Struct de descriptor de GDT 
- */
+//Struct de descriptor de GDT 
 typedef struct str_gdt_descriptor {
 	unsigned short gdt_length;
 	unsigned int gdt_addr;
 } __attribute__((__packed__)) gdt_descriptor;
 
-/* 
- * Struct de una entrada de la GDT 
- */
+//Struct de una entrada de la GDT 
 typedef struct str_gdt_entry {
 	unsigned short limit_0_15;
 	unsigned short base_0_15;
@@ -35,13 +29,10 @@ typedef struct str_gdt_entry {
 	unsigned char base_31_24;
 } __attribute__((__packed__, aligned (8))) gdt_entry;
 
-/*
- * GDT
- */ 
+//GDT
 extern gdt_entry gdt[];
 
-/*
- * Descriptor de la GDT
- */ 
+//* Descriptor de la GDT
 extern gdt_descriptor GDT_DESC;
+
 #endif //__GDT_H__

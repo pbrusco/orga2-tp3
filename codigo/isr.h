@@ -1,10 +1,7 @@
 #ifndef __ISR_H__
 #define __ISR_H__
 
-/*
- * Interrupt Service Routines
- * TODO: Agregar el resto de las ISR
- */
+//Interrupt Service Routines
 void _isr0();
 void _isr1();
 void _isr2();
@@ -30,11 +27,9 @@ void _isr21();
 
 /* **************************************************************
  * Funciones Auxiliares
- * **************************************************************
- */ 
+ * ************************************************************** */ 
 
-/*
- * Funcion para dibujar el reloj
- */
+//Funcion para dibujar el reloj
 void next_clock(void); 
+
 #endif // __ISR_H__

@@ -1,14 +1,9 @@
 #ifndef __TSS_H__
 #define __TSS_H__
 
-/*
- * Task State Segment
- * Definicion de las TSSs.
- */
+// Task State Segment - Definicion de las TSSs.
 
-/*
- * Definicion de una TSS 
- */
+// Definicion de una TSS 
 typedef struct str_tss {
 	unsigned short ptl;
 	unsigned short  unused0;
@@ -50,9 +45,8 @@ typedef struct str_tss {
 	unsigned short  iomap;
 } __attribute__((__packed__, aligned (8))) tss;
 
-/*
- * Arreglo de TSSs, asi tenemos todo mas ordenado 
- */
+
+// Arreglo de TSSs, asi tenemos todo mas ordenado
 extern tss tsss[];
 
 #endif //__TSS_H__
