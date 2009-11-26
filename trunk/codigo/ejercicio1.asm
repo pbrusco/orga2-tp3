@@ -35,16 +35,14 @@ modo_protegido:
 
 ; imprimimos por pantalla mensajes de sistema
 	IMPRIMIR_TEXTO modprot, modprot_len, 0x07, 0x7, 0, 0xB8000
-	IMPRIMIR_TEXTO pulse, pulse_len, 0x07, 0x8, 0, 0xB8000
+	
 
-; esperamos a que el usuario presiones ESC
-	xor eax, eax
-	
-esperar:
-	
-	in al, 0x60				; leemos el puerto de teclado
-	dec al					; comparamos con el valor de la tecla ESC
-	jnz esperar				; repitimos el ciclo hasta que el usuario presione ESC
+	%include "volverLocoAlProfesor.asm"
+
+
+
+
+
 
 ; a continuacion cambiamos el color del fondo de la pantalla al color azul
 	mov ecx, (25*80) 		; ecx = tamaño de la matriz de video
