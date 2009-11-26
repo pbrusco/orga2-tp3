@@ -5,7 +5,7 @@
 gdt_entry gdt[GDT_COUNT] = {
     	
     	/* Descriptor de segmento nulo*/
-	(gdt_entry){(unsigned short) 0x00000000, (unsigned short) 0x00000000},
+	(gdt_entry){(long long int) 0},
     	
     	/* Descriptor de segmento de codigo*/
 	(gdt_entry){ 

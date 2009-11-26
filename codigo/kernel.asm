@@ -11,8 +11,6 @@ extern tsss
 %define KORG 0x1200					; posicion de inicio de kernel
 %define TASK1INIT 0x8000			; posicion de inicio de la tarea pintor
 %define TASK2INIT 0x9000			; posicion de inicio de la tarea traductor
-%define PILATASK1 0x15400			; 15000 - 15400 una pagina de pila para la tarea 1
-%define PILATASK2 0x16400 			; 16000 - 16400 una pagina de pila para la tarea 2
 
 
 ; incluimos al principio del kernel el codigo de las macros para imprimir en pantalla en modo real
