@@ -24,7 +24,7 @@ start:
 	jmp 	bienvenida
 
 ;  mensajes por pantalla del sistema
-	iniciando: db 'Iniciando el kernel mas divertido del mundo'
+	iniciando: db 'Iniciando el kernel'
 	iniciando_len equ $ - iniciando
 
 	modreal: db 'Cpu en Modo Real'
@@ -33,8 +33,15 @@ start:
 	cambiando: db 'Cambiando a Modo Protegido'	
 	cambiando_len equ $ - cambiando
 
-	pulse: db 'Presione ESC para continuar '
+	pulse: db 'Escriba el nombre del grupo para continuar'
 	pulse_len equ $ - pulse
+
+	elNombre: db 'Ahhh.. el nombre es PUNPCKHQDQ'
+	elNombre_len equ $ - elNombre
+
+	pista: db 'o un "-"'
+	pista_len equ $ - pista
+
 
 	modprot: db 'Cpu en Modo Protegido'
 	modprot_len equ $ - modprot
