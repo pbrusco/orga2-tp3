@@ -7,56 +7,56 @@
 
 P1:	
 	in al, 0x60			
-	cmp al,0xCA				;TECLA			; comparamos con el valor de la tecla ESC
-	je TOPSECRET			; repitimos el ciclo hasta que el usuario presione ESC
-	cmp al,0x99				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz P1				; repitimos el ciclo hasta que el usuario presione ESC
+	cmp al,0xCA				
+	je TOPSECRET			
+	cmp al,0x99				
+	jnz P1				
 
 U1:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0x96				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz U1				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60				
+	cmp al,0x96				
+	jnz U1				
 
 N1:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0xB1				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz N1				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60				
+	cmp al,0xB1				
+	jnz N1				
 
 P2:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0x99				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz P2				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60				
+	cmp al,0x99				
+	jnz P2				
 
 C1:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0xAE				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz C1				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60				
+	cmp al,0xAE				
+	jnz C1				
 
 
 K1:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0xA5				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz K1				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60				
+	cmp al,0xA5			
+	jnz K1				
 
 H1:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0xA3				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz H1				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60			
+	cmp al,0xA3			
+	jnz H1				
 
 Q1:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0x90				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz Q1				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60				
+	cmp al,0x90				
+	jnz Q1				
 
 D1:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0xA0				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz D1				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60				
+	cmp al,0xA0				
+	jnz D1				
 
 Q2:	
-	in al, 0x60				; leemos el puerto de teclado
-	cmp al,0x90				;TECLA			; comparamos con el valor de la tecla ESC
-	jnz Q2				; repitimos el ciclo hasta que el usuario presione ESC
+	in al, 0x60				
+	cmp al,0x90				
+	jnz Q2				
 
 
 
