@@ -5,7 +5,7 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 \subsection{Ejercicio 1}
 \begin{itemize}
  \item Habilitamos el Gate A20 y verificamos que est\'e habilitado para poder direccionar memoria m\'as all\'a del megabyte
- \item Armamos en un archivo en lenguaje C una Tabla Global de Descriptores (GDT) en la que definimos 4 descriptores de segmento: 
+ \item Armamos en un archivo en lenguaje C una Tabla Global de Descriptores (GDT) en la que definimos 4 descriptores de segmento\footnote{Como se ped\'ia en el enunciado, tanto el segmento de codigo como el de datos siguen el modelo flat, es decir, cada segmento ocupa los 4GB de memoria principal}: 
 	\begin{itemize}
 	\item segmento nulo
 	\item segmento de c\'odigo

@@ -231,13 +231,19 @@ global _isr0, _isr1, _isr2, _isr3, _isr4, _isr5, _isr6, _isr7, _isr8, _isr9, _is
 
 	_isr21: 
 		cli								;deshabilito interrupciones
-		in al,0x60							;levanto el byte proveniente del teclado
+		cmp byte [cont], 0						;ignoro la primer pulsacion del esc
+		jg salir
 		push edx							;guardo edx
 		mov edx, msgisr21					
 		IMPRIMIR_TEXTO edx, msgisr21_len, 0x0C, 0, 0, 0x13000		;escribo por pantalla el mensaje de interrupcion
-		pop edx								;recupero edx
+		pop edx	
+		inc byte [cont]
+		jmp sigo
+	salir:	mov byte [cont], 0
+	sigo:	in al,0x60							;levanto el byte proveniente del teclado
 		mov al, 0x20
 		out 0x20, al							;aviso al pic que se atendio la interrupcion
+	
 		sti								;habilito las interrupciones
 		iret								;vuelvo de la interrupcion
 
@@ -266,5 +272,5 @@ global _isr0, _isr1, _isr2, _isr3, _isr4, _isr5, _isr6, _isr7, _isr8, _isr9, _is
 	isrmessage2: db '/'
 	isrmessage3: db '-'
 	isrmessage4: db '\'
-
+	cont: db 1
 
