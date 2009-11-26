@@ -1,6 +1,8 @@
-\section{Desarrollo}
+\section{Documentaci\'on}
 \paragraph{}
 A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'odigo de cada uno de los ejercicios
+
+\vspace{22pt}
 
 \subsection{Ejercicio 1}
 \begin{itemize}
@@ -23,8 +25,10 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
 
  \item Cargamos en ES la posici\'on que tiene dentro de la GDT el descriptor del segmento de memoria de video para luego poder escribir por pantalla.
  
- \item Escribimos en pantalla un marco de \* utilizando para ello el registro ES, que fue asignado para ser el selector del segmento de video. De esta manera, el selector en conjunto con un offset almacenado en un registro de prop\'osito general, nos dan la oportunidad de direccionar a las posiciones de memoria requeridas para escribir el marco.
+ \item Escribimos en pantalla un marco de ``\# '' utilizando para ello el registro ES, que fue asignado para ser el selector del segmento de video. De esta manera, el selector en conjunto con un offset almacenado en un registro de prop\'osito general, nos permite direccionar a las posiciones de memoria requeridas para escribir el marco.
 \end{itemize}
+
+\vspace{22pt}
 
 \subsection{Ejercicio 2}
 \begin{itemize}
@@ -36,32 +40,58 @@ A continuaci\'on se presentan los pasos llevados a cabo para desarrollar el c\'o
  \item Finalmente, una vez que se habilit\'o paginaci\'on, procedemos a escribir por pantalla el nombre del grupo a trav\'es de la direcci\'on de memoria 0x13000, que por como est\'a mapeado, es equivalente a escribir en la posici\'on 0xB8000 (memoria de video).
 \end{itemize}
 
+\vspace{22pt}
+
 \subsection{Ejercicio 3}
 \begin{itemize}
  \item Se armaron, en el archivo isr.asm, las rutinas de atenci\'on de interrupciones para cada excepci\'on del procesador y para las interrupciones del timertick y del teclado. Adem\'as, se definieron los mensajes correspondientes a cada excepci\'on/interrupci\'on proveniente del procesador. De esta forma, uno puede, entre otras acciones, conocer cu\'al es el motivo por el cual el kernel dej\'o de funcionar y a qu\'e excepci\'on/interrupci\'on corresponde el error que se produjo.
  \item Se llama a la funci\'on \textit{idtFill()}, que arma un vector de interrupciones con los datos de las rutinas declaradas en el item anterior.
  \item Se remapean los PICs para que no se pisen las interrupciones, dejando las interrupciones provenientes del PIC1 en las posiciones 0x20 hasta 0x27 y las del PIC2 desde 0x28 hasta 0x2F.
+\item Se habilita el PIC1 de modo que las interrupciones del mismo puedan producirse, y se deshabilita el PIC2, dado que al no contar con interrupcion alguna para este TP, no tiene sentido tenerlo habilitado.
  \item Finalmente, se carga el registro IDTR con la direcci\'on del vector proveniente del llamado \textit{idtFill()} y el tama\~no del mismo.
 \end{itemize}
 
+\vspace{22pt}
 
 \subsection{Ejercicio 4}
 \begin{itemize}
- \item Agregamos en la gdt 3 descriptores de tarea (descriptores TSS).
+ \item Agregamos en la GDT 3 descriptores de tarea (descriptores TSS).
 	\begin{itemize}
  		\item TSS ``nulo'', que se utiliza unicamente para poder ejecutar la primer tarea, ya que el procesador requiere un lugar para guardar el contexto de la tarea que se est\'a ejecutando (para este caso, el contexto es el propio del kernel, que no se va a volver a ejecutar)
 		\item TSS del pintor
 		\item TSS del traductor
 	\end{itemize}
-	En estos a\'un no especificamos la base del comienzo de cada descriptor tss, ya que desde c, es m\'as complicado conocer la posici\'on de memoria se ubican.
+	En estos a\'un no especificamos la base del comienzo de cada descriptor TSS, ya que desde c, es m\'as complicado conocer la posici\'on de memoria en que se ubican.
 
- \item Rellenamos desde assembler las tss con los datos que correspond\'ian (para pintor y traductor/kernel).\footnote{Esto se podr\'ia haber hecho desde c, pero se decidi\'o hacerlo de esta manera, ya que nos result\'o m\'as natural.}
- \item Luego, rellenamos las direcciones base correspondientes a cada tss en la gdt. Esto se realiza durante la ejecuci\'on, para evitar el problema antes mencionado.
- \item Se carga el registro de tareas con la direcci\'on de la tss ``nula'', para que el procesador sepa donde guardar el contexto actual al cambiar de tarea.
+ \item Armamos un archivo en lenguaje C con un arreglo que contiene a las tres TSS's descriptas en la GDT, e inicializamos sus valores de la siguiente manera:
+	\begin{itemize}
+ 	
+ 	\item En el caso de la TSS para el pintor, se llenaron los siguientes campos y el resto se dejaron nulos:
+ 		\begin{itemize}
+ 			\item CR3 = 0xA000. Esta direcci\'on se corresponde con el directorio de tabla de p\'aginas del pintor.
+			\item EIP = 0x8000. Esta direcci\'on corresponde al comienzo de la tarea.
+			\item EFLAGS = 0x202. Se inicia as\'i, de modo que esten habilitadas las interrupciones.
+			\item ESP y EBP = 0x15FFF. Como se pide en el enunciado, la pila del pintor est\'a contenida en la p\'agina que comienza en la direcci\'on 0x15000, pero como las pilas crecen hacia abajo, como comienzo de pila hay que poner el fondo de la misma. Adem\'as, por estar seteando los valores antes de que comience la tarea, tanto la base de la pila (EBP) como el tope (ESP) son iguales.
+			\item ES = SS = DS = FS = GS = 0x10. Esto se hace para que los selectores utilicen el segmento de datos.
+			\item CS = 0x08. Este valor corresponde al segmento de c\'odigo.
+		\end{itemize}
+	\item En el caso de la TSS para el traductor, se llenaron los siguientes campos y el resto se dejaron nulos:
+ 		\begin{itemize}
+ 			\item CR3 = 0xB000. Esta direcci\'on se corresponde con el directorio de tabla de p\'aginas del traductor y kernel.
+			\item EIP = 0x9000. Esta direcci\'on corresponde al comienzo de la tarea.
+			\item EFLAGS = 0x202. Se inicia as\'i, de modo que esten habilitadas las interrupciones.
+			\item ESP y EBP = 0x16FFF. Como se pide en el enunciado, la pila del traductor est\'a contenida en la p\'agina que comienza en la direcci\'on 0x16000, pero como las pilas crecen hacia abajo, como comienzo de pila hay que poner el fondo de la misma. Adem\'as, por estar seteando los valores antes de que comience la tarea, tanto la base de la pila (EBP) como el tope (ESP) son iguales.
+			\item ES = SS = DS = FS = GS = 0x10. Esto se hace para que los selectores utilicen el segmento de datos.
+			\item CS = 0x08. Este valor corresponde al segmento de c\'odigo.
+		\end{itemize}
+	\end{itemize}
+
+ \item Luego, rellenamos las direcciones base correspondientes a cada TSS en la GDT. Esto se realiza durante la ejecuci\'on, para evitar el problema antes mencionado.
+ \item Se carga el registro de tareas con la direcci\'on de la TSS ``nula'', para que el procesador sepa donde guardar el contexto actual al cambiar de tarea.
  \item Se habilitan las interrupciones
  \item Finalmente, se salta a la tarea del pintor para comenzar a ejecutar las tareas del pintor y traductor, posibilitandose esto gracias a la rutina de atenci\'on de interrupci\'on del timertick.
 \end{itemize}
 
-En lo que respecta a la atenci\'on de la interrupci\'on del timertick la idea fue, adem\'as de llamar a la funci\'on \textit{next\_clock}, hacer el switch de tareas. Para ello, se utiliz\'o el mismo contador de la funci\'on antes mencionada. Una vez que se sab\'ia a que tarea saltar, se deb\'ian seguir unos pasos para que en cada switcheo la tarea que se proced\'ia a ejecutar, se pudiese ejecutar normalmente.
+En lo que respecta a la atenci\'on de la interrupci\'on del timertick la idea fue, adem\'as de llamar a la funci\'on \textit{next\_clock}, hacer el switch de tareas. Para ello, se utiliz\'o el mismo contador de la funci\'on antes mencionada. Una vez que se sab\'ia a qu\'e tarea saltar, se deb\'ian seguir unos pasos para que en cada switcheo la tarea que se proced\'ia a ejecutar, se pudiese ejecutar normalmente.
 \paragraph{}
 Para explicarlo m\'as facilmente, daremos un ejemplo. Imaginemos que se est\'a ejecutando la tarea del pintor. Durante la ejecuci\'on, llega una interrupci\'on del timertick. Luego de ejecutar el llamado a \textit{next\_clock}, se salta a la etiqueta tareatraductor. En la misma, antes de pasar a ejecutar la tarea del traductor, se habilitan las interrupciones. Esto se hace porque cuando se pasa a ejecutar la tarea del traductor, se guarda el contexto de la tarea del pintor. De esta forma, cuando vuelva a ejecutarse la tarea del pintor, las interrupciones van a estar habilitadas. Debajo de la instrucci\'on \textit{jmp 0x30} se encuentra la instrucci\'on \textit{iret}. Esto se debe a que, cuando vuelva a ejecutarse la tarea del pintor, el eip que se guard\'o corresponde a la posici\'on de esta instrucci\'on, ya que si recordamos, lo ultimo que se hizo desde la tarea del pintor fue saltar a la tarea del traductor. De esta manera, cuando se retorna a la tarea del pintor, se ejecuta el \textit{iret}, volviendo as\'i finalmente a la instrucci\'on de la tarea del pintor que se deb\'ia ejecutar luego de atendida la interrupci\'on del timertick.
