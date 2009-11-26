@@ -2,9 +2,8 @@
 #include "idt.h"
 
 
-/*
- * Metodo para inicializar los descriptores de la IDT 
- */
+//Metodo para inicializar los descriptores de la IDT 
+
 void idtFill() {
 	idt[0].offset_0_15 = (unsigned short) ((unsigned int)(&_isr0) & (unsigned int) 0xFFFF); \
 	idt[0].segsel = (unsigned short) 0x0008; \
@@ -122,13 +121,9 @@ void idtFill() {
 
 }
 
-/*
- * IDT
- */ 
+//IDT 
 idt_entry idt[256] = {};
 
-/*
- * Descriptor de la IDT (para cargar en IDTR)
- */
+//Descriptor de la IDT (para cargar en IDTR)
 idt_descriptor IDT_DESC = {sizeof(idt)-1, (unsigned int)&idt};
 
