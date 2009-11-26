@@ -22,9 +22,6 @@
 bits 32		; le indico al compilador que el codigo que prosigue es de 32 bits
 modo_protegido:
 	
-; vacíamos la cola de ejecución la cola de ejecución del pipeline
-	jmp short $+2
-	
 ; actualizo los selectores para que apunten al descriptor del segmento de datos en la GDT
 	mov ax, 0x10
 	mov ds, ax
@@ -45,10 +42,9 @@ modo_protegido:
 	
 esperar:
 	
-	in al, 0x60				; leemos el puero de teclado
+	in al, 0x60				; leemos el puerto de teclado
 	dec al					; comparamos con el valor de la tecla ESC
 	jnz esperar				; repitimos el ciclo hasta que el usuario presione ESC
-
 
 ; a continuacion cambiamos el color del fondo de la pantalla al color azul
 	mov ecx, (25*80) 		; ecx = tamaño de la matriz de video
