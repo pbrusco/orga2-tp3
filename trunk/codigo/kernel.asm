@@ -14,8 +14,8 @@ extern tsss
 
 
 ; incluimos al principio del kernel el codigo de las macros para imprimir en pantalla en modo real
-	%include "macrosmodoreal.mac"
-	%include "macrosmodoprotegido.mac"
+	%include "macros/macrosmodoreal.mac"
+	%include "macros/macrosmodoprotegido.mac"
 
 start:
 
@@ -52,30 +52,30 @@ start:
 
 bienvenida:
 	; ejercicio 1
-		%include "ejercicio1.asm"
+		%include "ejercicios/ejercicio1.asm"
 	
 	; ejercicio 2
-		%include "ejercicio2.asm"
+		%include "ejercicios/ejercicio2.asm"
 
 	; ejercicio 3
-		%include "ejercicio3.asm"
+		%include "ejercicios/ejercicio3.asm"
 	
 	; ejercicio 4
-		%include "ejercicio4.asm"
+		%include "ejercicios/ejercicio4.asm"
 	
 	; detenemos la ejecucion en este punto
 	jmp $
 		
 		
 ; incluimos en el kernel el codigo de los siguientes archivos
-	%include "a20.asm"
+	%include "macros/a20.asm"
 
 ;  rellenamos con 0's hasta la posicion donde inicia la tarea pintor (0x8000)
 	TIMES TASK1INIT - KORG - ($ - $$) db 0x00
 
 ; incluimos el codigo de la tarea pintor , y como este ocupa justamente una pagina, seguidamente incluimos el codigo de la tarea traductor sin necesidad de tener que rellenar con 0's nuevamente
-	incbin "pintor.tsk"
-	incbin "traductor.tsk"
+	incbin "tareas/pintor.tsk"
+	incbin "tareas/traductor.tsk"
 
 ;  rellenamos con 0's hasta la posicion donde inicia el Directorio de Paginas de la tarea pintor (0xA000)
 	TIMES ComienzoDirectorioPaginaPintor - KORG - ($ - $$) db 0x00

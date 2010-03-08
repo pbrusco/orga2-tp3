@@ -221,7 +221,8 @@ vga: extension=vbe
 # and status specified. Usually the drive type is set up based on the media type.
 #=======================================================================
 #floppya: 1_44=/dev/fd0, status=inserted
-floppya: image=./diskette.img, status=inserted
+floppya: image=almacenamiento/diskette.img, status=inserted
+#floppya: image=almacenamiento/a.img, status=inserted
 #floppya: 1_44=/dev/fd0H1440, status=inserted
 #floppya: 1_2=../1_2, status=inserted
 #floppya: 1_44=a:, status=inserted
@@ -233,7 +234,7 @@ floppya: image=./diskette.img, status=inserted
 # See FLOPPYA above for syntax
 #=======================================================================
 #floppyb: 1_44=b:, status=inserted
-#floppyb: 1_44=b.img, status=inserted
+#floppyb: 1_44=almacenamiento/b.img, status=inserted
 
 #=======================================================================
 # ATA0, ATA1, ATA2, ATA3
@@ -314,6 +315,9 @@ floppya: image=./diskette.img, status=inserted
 #ata0-slave: type=cdrom, path=/dev/cdrom, status=inserted
 #ata0-slave: type=cdrom, path="drive", status=inserted
 #ata0-slave: type=cdrom, path=/dev/rcd0d, status=inserted 
+
+#ata0-master: type=disk, path=almacenamiento/c.img, cylinders=306, heads=4, spt=17
+#ata0-master: type=disk, path=almacenamiento/d.img, mode=flat, cylinders=65, heads=16, spt=63
 
 #=======================================================================
 # BOOT:
