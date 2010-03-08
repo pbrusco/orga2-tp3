@@ -5,8 +5,8 @@ KERNEL_OBJ=kernel.o
 KERNEL_BIN=kernel.bin
 
 
-OBJ= $(KERNEL_OBJ)  gdt.o idt.o isr.o tss.o
-DISK_IMG=diskette.img
+OBJ= $(KERNEL_OBJ)  gdt/gdt.o interrupciones/idt.o interrupciones/isr.o tareas/tss.o
+DISK_IMG=almacenamiento/diskette.img
 
 CFLAGS=-m32 -g -ggdb -Wall -Werror -O0 \
   -fno-zero-initialized-in-bss -fno-stack-protector -ffreestanding
